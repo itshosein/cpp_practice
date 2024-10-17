@@ -1,2 +1,0 @@
-C:\mingw64\bin\ar.exe qc libsubdir_oop_library.a CMakeFiles/subdir_oop_library.dir/class.cpp.obj CMakeFiles/subdir_oop_library.dir/cylinder.cpp.obj CMakeFiles/subdir_oop_library.dir/person.cpp.obj CMakeFiles/subdir_oop_library.dir/point.cpp.obj
-C:\mingw64\bin\ranlib.exe libsubdir_oop_library.a
