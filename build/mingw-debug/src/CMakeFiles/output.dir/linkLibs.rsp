@@ -1,0 +1,1 @@
+ "../vcpkg_installed/x64-mingw-static/debug/lib/libfmtd.a" practice_files/libsubdir_practices_library.a practice_files/oop/libsubdir_oop_library.a "../vcpkg_installed/x64-mingw-static/debug/lib/libfmtd.a" -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

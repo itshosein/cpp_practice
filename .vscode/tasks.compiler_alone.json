@@ -1,0 +1,65 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "Build with MSVC",
+      "command": "cl.exe",
+      "args": [
+        "/Zi",
+        "/std:c++latest",
+        "/EHsc",
+        "/Fe:",
+        "${fileDirname}\\output\\roaster.exe",
+        "${workspaceFolder}\\*.cpp"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$msCompile"],
+      "group": "build",
+      "detail": "compiler: cl.exe"
+    },
+    {
+      "type": "cppbuild",
+      "label": "Build with g++",
+      "command": "C:/mingw64/bin/g++.exe",
+      "args": [
+        "-g",
+        "-std=c++20",
+        "-I",
+        "${workspaceFolder}\\headers",
+        "${workspaceFolder}\\*.cpp",
+        "-o",
+        "${fileDirname}\\output\\roaster.exe"
+      ],
+      "options": {
+        "cwd": "C:/mingw64/bin"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "detail": "compiler: C:/mingw64/bin/g++.exe"
+    },
+    {
+      "type": "cppbuild",
+      "label": "Build with Clang",
+      "command": "C:\\mingw64\\bin\\clang++.exe",
+      "args": [
+        "-g",
+        "-std=c++20",
+        "${workspaceFolder}\\*.cpp",
+        "-o",
+        "${fileDirname}\\output\\roaster.exe"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": "build",
+      "detail": "compiler: C:\\mingw64\\bin\\clang++.exe"
+    }
+  ]
+}

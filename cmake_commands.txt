@@ -1,0 +1,13 @@
+win for build files => cmake -G "MinGW Makefiles" ..
+linux for build files => cmake ..
+
+win for compile files => mingw32-make
+linux for compile files => make
+
+
+cmake -DCMAKE_BUILD_TYPE=Release
+
+for adding libraries e.g. here we are adding the Boost library
+find_package(Boost REQUIRED)
+
+target_link_libraries(outputFileName Boost::Boost)

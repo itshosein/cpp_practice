@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "CMake: build",
+      "command": "cmake --build build",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "Run Executable",
+      "command": "./build/output.exe",
+      "group": "none",
+      "problemMatcher": [],
+      "detail": "Run the compiled executable"
+    },
+    {
+      "type": "shell",
+      "label": "Run Script",
+      "command": "./script.sh",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "detail": "Run the compiled executable"
+    }
+  ]
+}

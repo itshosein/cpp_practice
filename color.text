@@ -1,0 +1,40 @@
+resetting => \033[0m
+
+echo -e "\033[38;2;255;100;0mTRUECOLOR\033[0m support"
+only git bash supports true color but all consoles output the true color outputs!
+{
+\033[38;2;<r>;<g>;<b>m  // Set foreground (text) to RGB color
+\033[48;2;<r>;<g>;<b>m  // Set background to RGB color
+}
+
+\033[<attributes>;<foreground color>;<background color>m
+{
+  Foreground (Text) Color Codes:
+    These codes control the color of the text.
+
+    30: Black
+    31: Red
+    32: Green
+    33: Yellow
+    34: Blue
+    35: Magenta
+    36: Cyan
+    37: White
+  Background Color Codes:
+    These codes control the background color.
+
+    40: Black
+    41: Red
+    42: Green
+    43: Yellow
+    44: Blue
+    45: Magenta
+    46: Cyan
+    47: White
+  List of Attributes:
+    0: Reset all attributes.
+    1: Bold text.
+    4: Underline.
+    5: Blink (not supported in many terminals).
+    7: Inverse (swaps foreground and background colors).
+}
