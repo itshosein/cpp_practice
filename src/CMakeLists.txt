@@ -23,4 +23,4 @@ add_executable(output ${SOURCES})
 
 # Optional: Add any libraries here if needed
 # target_link_libraries(roaster some_library)
-target_link_libraries(output PRIVATE fmt::fmt subdir_practices_library subdir_oop_library)
+target_link_libraries(output PRIVATE fmt::fmt subdir_practices_library subdir_oop_library subdir_smart_pointers_library)
