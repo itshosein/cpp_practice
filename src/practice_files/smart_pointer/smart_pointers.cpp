@@ -149,7 +149,7 @@ void smart_pointers() {
     auto cat22 = std::make_shared<CostumeClasses::Cat>("cat22");
     auto cat23 = std::make_shared<CostumeClasses::Cat>("cat23");
 
-    // cycling dependency problem
+    // cycling dependency problem or circular dependencies
     // because they have shared pointer to each other, they will never get
     // destroyed so we have to use weak pointer to prevent this!
     cat22->set_friend(cat23);
@@ -159,6 +159,7 @@ void smart_pointers() {
     std::weak_ptr<CostumeClasses::Cat> cat25{cat23};
     cat24.lock()->print_info();
     fmt::print(fg(fmt::color::blue), "cat24[count]: {} \n", cat24.use_count());
+    fmt::print(fg(fmt::color::blue), "cat22[count]: {} \n", cat22.use_count());
   }
 }
 

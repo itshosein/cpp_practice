@@ -9,6 +9,8 @@ namespace CostumeClasses {
 class Cat {
 private:
   std::string_view m_name{"CatSampleName"};
+  // std::shared_ptr<Cat>
+  //     m_friend{}; // cycling dependency problem or circular dependencies
   std::weak_ptr<Cat> m_friend{};
 
 public:
