@@ -119,6 +119,47 @@ void smart_pointers() {
     fmt::print(fg(fmt::color::blue), "cats18 use count: {}\n",
                cats18.use_count());
   }
+
+  {
+    fmt::print("\n\nshare ptr in param\n");
+    std::shared_ptr<CostumeClasses::Cat> cat19{
+        std::make_shared<CostumeClasses::Cat>("cat19")};
+
+    shared_ptr_value_prm(cat19);
+
+    fmt::print(fg(fmt::color::blue),
+               "cat[address]: {} outside shared_ptr_value_prm\n",
+               reinterpret_cast<uintptr_t>(cat19.get()));
+    fmt::print(fg(fmt::color::blue),
+               "cat[count]: {} outside shared_ptr_value_prm\n\n",
+               cat19.use_count());
+
+    auto cat21{get_shared_ptr()};
+
+    fmt::print(fg(fmt::color::blue),
+               "cat21[address]: {} outside shared_ptr_value_prm\n",
+               reinterpret_cast<uintptr_t>(cat21.get()));
+    fmt::print(fg(fmt::color::blue),
+               "cat21[count]: {} outside shared_ptr_value_prm\n",
+               cat21.use_count());
+  }
+
+  {
+    fmt::print("\n\nweak ptr\n");
+    auto cat22 = std::make_shared<CostumeClasses::Cat>("cat22");
+    auto cat23 = std::make_shared<CostumeClasses::Cat>("cat23");
+
+    // cycling dependency problem
+    // because they have shared pointer to each other, they will never get
+    // destroyed so we have to use weak pointer to prevent this!
+    cat22->set_friend(cat23);
+    cat23->set_friend(cat22);
+
+    std::weak_ptr<CostumeClasses::Cat> cat24{cat22};
+    std::weak_ptr<CostumeClasses::Cat> cat25{cat23};
+    cat24.lock()->print_info();
+    fmt::print(fg(fmt::color::blue), "cat24[count]: {} \n", cat24.use_count());
+  }
 }
 
 void unique_ptr_value_prm(std::unique_ptr<CostumeClasses::Cat> cat) {
@@ -127,6 +168,23 @@ void unique_ptr_value_prm(std::unique_ptr<CostumeClasses::Cat> cat) {
 
 void unique_ptr_ref_prm(const std::unique_ptr<CostumeClasses::Cat> &cat) {
   cat->print_info();
+}
+
+void shared_ptr_value_prm(const std::shared_ptr<CostumeClasses::Cat> &cat) {
+  fmt::print(fg(fmt::color::blue),
+             "cat[address]: {} inside shared_ptr_value_prm\n",
+             reinterpret_cast<uintptr_t>(cat.get()));
+  fmt::print(fg(fmt::color::blue),
+             "cat[count]: {} inside shared_ptr_value_prm\n", cat.use_count());
+}
+
+std::shared_ptr<CostumeClasses::Cat> get_shared_ptr() {
+  auto cat20{std::make_shared<CostumeClasses::Cat>("cat20")};
+  fmt::print(fg(fmt::color::blue), "cat20[address]: {} inside get_shared_ptr\n",
+             reinterpret_cast<uintptr_t>(cat20.get()));
+  fmt::print(fg(fmt::color::blue), "cat20[count]: {} inside get_shared_ptr\n",
+             cat20.use_count());
+  return cat20;
 }
 
 /**

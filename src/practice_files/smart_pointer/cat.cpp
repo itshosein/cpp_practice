@@ -15,8 +15,14 @@ void Cat::print_info() {
              m_name, reinterpret_cast<uintptr_t>(this));
 }
 
-Cat *CostumeClasses::Cat::set_name(std::string_view name) {
+Cat *Cat::set_name(std::string_view name) {
   this->m_name = name;
   return this;
 }
+
+Cat *Cat::set_friend(const std::shared_ptr<Cat> &cat) {
+  m_friend = cat;
+  return this;
+}
+
 } // namespace CostumeClasses

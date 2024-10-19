@@ -15,6 +15,10 @@ void unique_ptr_ref_prm(const std::unique_ptr<CostumeClasses::Cat> &cat);
 
 std::unique_ptr<CostumeClasses::Cat> get_unique_ptr();
 
+void shared_ptr_value_prm(const std::shared_ptr<CostumeClasses::Cat> &cat);
+
+std::shared_ptr<CostumeClasses::Cat> get_shared_ptr();
+
 } // namespace SmartPointers
 
 #endif
