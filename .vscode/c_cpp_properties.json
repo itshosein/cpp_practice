@@ -1,20 +1,27 @@
 {
-  "configurations": [
-    {
-      "name": "Win32",
-      "includePath": ["${workspaceFolder}/**"],
-      "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
-      "windowsSdkVersion": "10.0.22621.0",
-      "compilerPath": "C:/mingw64/bin/g++.exe",
-      "cStandard": "c17",
-      "cppStandard": "c++23",
-      "intelliSenseMode": "windows-gcc-x64"
-    },
-    {
-      "name": "CMake",
-      "compileCommands": "${config:cmake.buildDirectory}/mingw-debug/compile_commands.json",
-      "configurationProvider": "ms-vscode.cmake-tools"
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.22621.0",
+            "compilerPath": "C:/mingw64/bin/g++.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++23",
+            "intelliSenseMode": "windows-gcc-x64",
+            "compileCommands": "${workspaceFolder}/build/mingw-debug/compile_commands.json"
+        },
+        {
+            "name": "CMake",
+            "compileCommands": "${config:cmake.buildDirectory}/mingw-debug/compile_commands.json",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
 }

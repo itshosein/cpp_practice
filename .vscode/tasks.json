@@ -19,7 +19,7 @@
     {
       "type": "shell",
       "label": "Run Script",
-      "command": "./script.sh",
+      "command": "./run_script.sh",
       "group": {
         "kind": "build",
         "isDefault": true
