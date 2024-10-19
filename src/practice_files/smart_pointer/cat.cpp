@@ -14,4 +14,9 @@ void Cat::print_info() {
   fmt::print(fg(fmt::color::cyan), "Cat obj has name {} and stored in {}!\n",
              m_name, reinterpret_cast<uintptr_t>(this));
 }
+
+Cat *CostumeClasses::Cat::set_name(std::string_view name) {
+  this->m_name = name;
+  return this;
+}
 } // namespace CostumeClasses

@@ -13,6 +13,8 @@ public:
   Cat(std::string_view name);
   ~Cat();
 
+  Cat *set_name(std::string_view name);
+
   void print_info();
 };
 } // namespace CostumeClasses

@@ -6,6 +6,10 @@
 namespace SmartPointers {
 
 void smart_pointers() {
+
+  fmt::print(fg(fmt::color::green),
+             "**************************** unique pointer "
+             "****************************\n");
   CostumeClasses::Cat *cat1{new CostumeClasses::Cat{"Sammy"}};
   {
     std::unique_ptr<CostumeClasses::Cat> cat2{cat1};
@@ -21,37 +25,99 @@ void smart_pointers() {
     cat4.reset(); // release and point to nullptr
   }
   // cat1->print_info(); // error again because cat2 deleted memory!
+  {
+    std::unique_ptr<CostumeClasses::Cat> cat5{
+        std::make_unique<CostumeClasses::Cat>("John")};
+    unique_ptr_value_prm(std::move(cat5));
+    fmt::print(fg(fmt::color::blue), "cat5: {}\n",
+               reinterpret_cast<uintptr_t>(cat5.get()));
 
-  std::unique_ptr<CostumeClasses::Cat> cat5{
-      std::make_unique<CostumeClasses::Cat>("John")};
-  unique_ptr_value_prm(std::move(cat5));
-  fmt::print(fg(fmt::color::blue), "cat5: {}\n",
-             reinterpret_cast<uintptr_t>(cat5.get()));
+    std::unique_ptr<CostumeClasses::Cat> cat6{
+        std::unique_ptr<CostumeClasses::Cat>{new CostumeClasses::Cat{"Jack"}}};
+    unique_ptr_ref_prm(cat6);
+    fmt::print(fg(fmt::color::blue), "cat6: {}\n",
+               reinterpret_cast<uintptr_t>(cat6.get()));
+    auto cat7{get_unique_ptr()};
+    cat7->print_info();
 
-  std::unique_ptr<CostumeClasses::Cat> cat6{
-      std::unique_ptr<CostumeClasses::Cat>{new CostumeClasses::Cat{"Jack"}}};
-  unique_ptr_ref_prm(cat6);
-  fmt::print(fg(fmt::color::blue), "cat6: {}\n",
-             reinterpret_cast<uintptr_t>(cat6.get()));
-  auto cat7{get_unique_ptr()};
-  cat7->print_info();
+    auto cats8{std::unique_ptr<CostumeClasses::Cat[]>{new CostumeClasses::Cat[]{
+        CostumeClasses::Cat{"cat81"}, CostumeClasses::Cat{"cat82"}}}};
+    for (size_t i{}; i < 2; i++) {
+      cats8[i].print_info();
+    }
 
-  auto cats8{std::unique_ptr<CostumeClasses::Cat[]>{new CostumeClasses::Cat[]{
-      CostumeClasses::Cat{"cat81"}, CostumeClasses::Cat{"cat82"}}}};
-  for (size_t i{}; i < 2; i++) {
-    cats8[i].print_info();
+    std::unique_ptr<CostumeClasses::Cat[]> cats9{new CostumeClasses::Cat[]{
+        CostumeClasses::Cat{"cat91"}, CostumeClasses::Cat{"cat92"}}};
+    for (size_t i{}; i < 2; i++) {
+      cats9[i].print_info();
+    }
+
+    std::unique_ptr<CostumeClasses::Cat[]> cats10{
+        std::make_unique<CostumeClasses::Cat[]>(2)};
+    for (size_t i{}; i < 2; i++) {
+      cats10[i].print_info();
+    }
+  }
+  fmt::print(fg(fmt::color::green),
+             "\n**************************** shared pointer "
+             "****************************\n\n");
+
+  {
+
+    std::shared_ptr<CostumeClasses::Cat> cat11{
+        new CostumeClasses::Cat{"cat11"}};
+
+    cat11->print_info();
+    fmt::print(fg(fmt::color::blue), "cat11 use count: {}\n",
+               cat11.use_count());
+    auto cat12{cat11};
+    cat11->set_name("cat11 edited!");
+    cat12->print_info();
+    fmt::print(fg(fmt::color::blue), "cat11 use count: {}\n",
+               cat11.use_count());
+    cat12.reset();
+    fmt::print(fg(fmt::color::blue), "cat11 use count: {}\n",
+               cat11.use_count());
+
+    auto cat13{cat11};
+    cat13->print_info();
+    cat11.reset();
+    fmt::print(fg(fmt::color::blue), "cat11 use count: {}\n",
+               cat11.use_count());
+    fmt::print(fg(fmt::color::blue), "before block ending");
   }
 
-  std::unique_ptr<CostumeClasses::Cat[]> cats9{new CostumeClasses::Cat[]{
-      CostumeClasses::Cat{"cat91"}, CostumeClasses::Cat{"cat92"}}};
-  for (size_t i{}; i < 2; i++) {
-    cats9[i].print_info();
+  {
+    fmt::print("\n\nshare ptr with unique ptr\n");
+
+    auto cat14{std::make_unique<CostumeClasses::Cat>("cat14")};
+    std::shared_ptr<CostumeClasses::Cat> cat15{std::move(cat14)};
+    cat15->print_info();
+    fmt::print(fg(fmt::color::blue), "cat15 use count: {}\n",
+               cat15.use_count());
+
+    auto cat16{std::make_shared<CostumeClasses::Cat>("cat16")};
+    cat16->print_info();
+
+    std::shared_ptr<CostumeClasses::Cat> cat17{get_unique_ptr()};
+    cat17->print_info();
+    // cat14->print_info();// wrong!!
   }
 
-  std::unique_ptr<CostumeClasses::Cat[]> cats10{
-      std::make_unique<CostumeClasses::Cat[]>(2)};
-  for (size_t i{}; i < 2; i++) {
-    cats10[i].print_info();
+  {
+    fmt::print("\n\narrays of share ptr\n");
+    std::shared_ptr<CostumeClasses::Cat[]> cats18{
+        new CostumeClasses::Cat[5]{CostumeClasses::Cat{"cat18-1"}}};
+    for (size_t i = 0; i < 5; i++) {
+      cats18[i].print_info();
+    }
+
+    auto cats19{cats18};
+    for (size_t i = 0; i < 5; i++) {
+      cats19[i].print_info();
+    }
+    fmt::print(fg(fmt::color::blue), "cats18 use count: {}\n",
+               cats18.use_count());
   }
 }
 
@@ -66,7 +132,7 @@ void unique_ptr_ref_prm(const std::unique_ptr<CostumeClasses::Cat> &cat) {
 /**
  * compiler returns the same pointer!
  * @returns
- * same pointer to a cat (implicit std::move)
+ * same unique pointer to a cat (implicit std::move)
  */
 std::unique_ptr<CostumeClasses::Cat> get_unique_ptr() {
   std::unique_ptr<CostumeClasses::Cat> catInner1{
