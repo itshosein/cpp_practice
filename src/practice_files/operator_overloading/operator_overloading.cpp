@@ -1,5 +1,6 @@
 #include "point-ov.h"
 #include <fmt/core.h>
+#include <iostream>
 #include <memory>
 
 namespace OpOverload {
@@ -18,5 +19,7 @@ void operator_overloading_func() {
   fmt::println("(*p_point1).operator[](0): {}", (*p_point1).operator[](0));
   fmt::print("(*p_point1).operator+(*p_point2): ");
   (*p_point1).operator+(*p_point2).print_info();
+
+  std::cout << (*p_point5);
 }
 } // namespace OpOverload

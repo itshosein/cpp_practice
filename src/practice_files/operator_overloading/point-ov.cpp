@@ -40,4 +40,10 @@ Point operator*(const Point &left, const Point &right) {
   return Point(left.m_x * right.m_x, left.m_y * right.m_y);
 }
 
+std::ostream &operator<<(std::ostream &os, const Point &p) {
+  os << fmt::format(fg(fmt::color::cyan),
+                    "Point with << [ {:.3f} , {:.3f} ] \n", p.m_x, p.m_y);
+  return os;
+}
+
 } // namespace OpOverload
