@@ -1,4 +1,5 @@
-#include "smart_pointers.h"
+#include "operator_overloading.h"
+#include "point-ov.h"
 #include "unix_time.h"
 #include <fmt/color.h>
 #include <fmt/core.h>
@@ -10,7 +11,7 @@ int main(int argc, char *argv[]) {
   // fmt::print(fg(fmt::color::pink), "miliseconds: {}",
   //            UnixTime::get_unix_time());
   // FunctionMisfits::functions_misfit();
-  SmartPointers::smart_pointers();
+  OpOverload::operator_overloading_func();
   // try {
   //   std::ofstream file{"test.txt"};
   //   file << "Hello, World!\nso niiiiiiiiiiiiice";
