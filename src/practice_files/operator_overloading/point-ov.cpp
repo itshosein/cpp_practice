@@ -1,7 +1,5 @@
 #include "point-ov.h"
 #include <cassert>
-#include <fmt/color.h>
-#include <fmt/core.h>
 
 namespace OpOverload {
 

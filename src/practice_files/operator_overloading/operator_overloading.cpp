@@ -20,6 +20,7 @@ void operator_overloading_func() {
   fmt::print("(*p_point1).operator+(*p_point2): ");
   (*p_point1).operator+(*p_point2).print_info();
 
-  std::cout << (*p_point5);
+  std::cin >> (*p_point5);
+  std::cout << "you entered: ", (*p_point5);
 }
 } // namespace OpOverload
