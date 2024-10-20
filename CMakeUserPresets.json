@@ -5,7 +5,7 @@
       "name": "default",
       "inherits": "mingw-debug",
       "environment": {
-        "VCPKG_ROOT": "C:\\vcpkg"
+        "VCPKG_ROOT": "C:/vcpkg"
       }
     }
   ]
