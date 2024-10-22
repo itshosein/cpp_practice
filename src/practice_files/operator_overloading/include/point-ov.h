@@ -5,6 +5,7 @@
 #include <fmt/core.h>
 #include <istream>
 #include <ostream>
+#include <vector>
 
 namespace OpOverload {
 
@@ -37,6 +38,9 @@ public:
   const double &operator[](int index) const;
 
   double &operator[](int index);
+
+  // Type Conversions should be member variables!
+  explicit operator std::vector<double>();
 };
 
 inline std::istream &operator>>(std::istream &is, Point &p) {

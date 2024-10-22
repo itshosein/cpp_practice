@@ -1,5 +1,6 @@
 #include "point-ov.h"
 #include <cassert>
+#include <vector>
 
 namespace OpOverload {
 
@@ -42,6 +43,10 @@ std::ostream &operator<<(std::ostream &os, const Point &p) {
   os << fmt::format(fg(fmt::color::cyan),
                     "Point with << [ {:.3f} , {:.3f} ] \n", p.m_x, p.m_y);
   return os;
+}
+
+Point::operator std::vector<double>() {
+  return std::vector<double>{this->m_x, this->m_y};
 }
 
 } // namespace OpOverload

@@ -1,4 +1,6 @@
+#include "operator_overloading.h"
 #include "point-ov.h"
+#include <fmt/color.h>
 #include <fmt/core.h>
 #include <iostream>
 #include <memory>
@@ -21,6 +23,21 @@ void operator_overloading_func() {
   (*p_point1).operator+(*p_point2).print_info();
 
   std::cin >> (*p_point5);
-  std::cout << "you entered: ", (*p_point5);
+  std::cout << "you entered: " << (*p_point5);
+
+  fmt::println("\n\n***************************\n");
+
+  check_even(static_cast<std::vector<double>>(*p_point5));
+}
+
+void check_even(const std::vector<double> &v) {
+
+  for (size_t i{}; i < v.size(); i++) {
+    bool is_even{static_cast<int>(v[i]) % 2 == 0};
+    fmt::print(fg(fmt::color::blue), "{} is{} even\n", v[i],
+               is_even ? "" : " not");
+  }
+
+  //
 }
 } // namespace OpOverload
