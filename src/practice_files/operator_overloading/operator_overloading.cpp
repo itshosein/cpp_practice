@@ -35,6 +35,10 @@ void operator_overloading_func() {
   std::cout << (*p_point5);
 
   *p_point4 = *p_point3; // copy assignment!
+
+  auto p_point6{
+      std::make_unique<Point>()}; // default constructor for instantiating
+  (*p_point6)();                  // call to operator () on this object
 }
 
 void check_even(const std::vector<double> &v) {

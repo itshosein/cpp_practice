@@ -32,6 +32,10 @@ public:
 
   Point(double x, double y);
 
+  void operator()() const;
+
+  // static void operator()(); only on c++23 () with static
+
   ~Point();
 
   void print_info();

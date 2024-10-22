@@ -9,6 +9,15 @@ Point::Point(double x, double y) : m_x{x}, m_y{y} {
              this->m_y);
 }
 
+void Point::operator()() const {
+  fmt::print(fg(fmt::color::blue), "hello from operator (): {}, {}\n",
+             this->m_x, this->m_y);
+}
+
+// void Point::operator()() {
+//   fmt::print(fg(fmt::color::blue), "hello from static operator ():\n");
+// }
+
 Point::~Point() {
   fmt::print(fg(fmt::color::orange), "Destructed Point: [ {}, {} ]\n",
              this->m_x, this->m_y);
