@@ -28,6 +28,13 @@ void operator_overloading_func() {
   fmt::println("\n\n***************************\n");
 
   check_even(static_cast<std::vector<double>>(*p_point5));
+  (*p_point5)++;
+  ++(*p_point5);
+  (*p_point5)--;
+  --(*p_point5);
+  std::cout << (*p_point5);
+
+  *p_point4 = *p_point3; // copy assignment!
 }
 
 void check_even(const std::vector<double> &v) {

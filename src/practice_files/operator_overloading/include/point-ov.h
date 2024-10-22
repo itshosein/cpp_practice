@@ -18,6 +18,11 @@ class Point {
 
   friend std::istream &operator>>(std::istream &is, Point &p);
 
+  friend void operator++(Point &p);
+  friend Point operator++(Point &p, int);
+  friend void operator--(Point &p);
+  friend Point operator--(Point &p, int);
+
 private:
   double m_x{};
   double m_y{};
@@ -34,12 +39,19 @@ public:
   Point operator+(const Point &p);
 
   Point operator-(const Point &p);
+  // prefix
+  // void operator++();
+  // prefix
+  // Point operator++(int);
 
+  // should be member
   const double &operator[](int index) const;
 
   double &operator[](int index);
 
-  // Type Conversions should be member variables!
+  Point &operator=(const Point &p);
+
+  // Type Conversions should be member variables! no return type!
   explicit operator std::vector<double>();
 };
 

@@ -45,8 +45,40 @@ std::ostream &operator<<(std::ostream &os, const Point &p) {
   return os;
 }
 
+Point &Point::operator=(const Point &p) {
+  fmt::print(fg(fmt::color::blue), "inside copy assignment!\n");
+
+  if (this != &p) {
+    m_x = p.m_x;
+    m_y = p.m_y;
+  }
+  return *this;
+}
+
 Point::operator std::vector<double>() {
   return std::vector<double>{this->m_x, this->m_y};
+}
+
+void operator++(Point &p) {
+  p.m_x++;
+  p.m_y++;
+}
+
+Point operator++(Point &p, int) {
+  Point tmp{p};
+  ++p;
+  return tmp;
+}
+
+void operator--(Point &p) {
+  p.m_x--;
+  p.m_y--;
+}
+
+Point operator--(Point &p, int) {
+  Point tmp{p};
+  --p;
+  return tmp;
 }
 
 } // namespace OpOverload
