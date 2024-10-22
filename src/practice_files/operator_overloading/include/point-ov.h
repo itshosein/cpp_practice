@@ -32,8 +32,6 @@ public:
 
   Point(double x, double y);
 
-  void operator()() const;
-
   // static void operator()(); only on c++23 () with static
 
   ~Point();
@@ -52,6 +50,8 @@ public:
   const double &operator[](int index) const;
 
   double &operator[](int index);
+
+  void operator()() const;
 
   Point &operator=(const Point &p);
 
