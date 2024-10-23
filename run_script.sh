@@ -1,12 +1,13 @@
 #!/bin/bash
 clear
 build_location=build/mingw-debug
-build=""
+build="false"
 
 while [[ "$#" -gt 0 ]]; do
     case "$1" in
     --build)
-        build=${2:-"false"}
+        # ${1:-"defaultValue"}
+        build="true"
         shift
         ;;
     esac
@@ -23,7 +24,8 @@ if [[ -f ./$build_location/src/output.exe ]]; then {
     }; fi
 }; fi
 
-if [[ "$build" != "false" && -d ./$build_location ]]; then {
+if [[ "$build" == "true" && -d ./$build_location ]]; then {
+    echo "$build"
     echo "Deleting build folder..."
     rm -rf ./$build_location
     if [ $? -eq 0 ]; then {
