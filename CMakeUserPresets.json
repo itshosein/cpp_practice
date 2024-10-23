@@ -5,7 +5,9 @@
       "name": "default",
       "inherits": "mingw-debug",
       "environment": {
-        "VCPKG_ROOT": "C:/vcpkg"
+        "VCPKG_ROOT": "C:/vcpkg",
+        "CMAKE_CXX_COMPILER": "C:/mingw64/bin/g++.exe",
+        "CMAKE_C_COMPILER": "C:/mingw64/bin/gcc.exe"
       }
     }
   ]

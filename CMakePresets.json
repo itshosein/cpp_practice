@@ -14,7 +14,9 @@
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-        "VCPKG_TARGET_TRIPLET": "x64-mingw-static"
+        "VCPKG_TARGET_TRIPLET": "x64-mingw-static",
+        "CMAKE_CXX_COMPILER": "$env{CMAKE_CXX_COMPILER}",
+        "CMAKE_C_COMPILER": "$env{CMAKE_C_COMPILER}"
       },
       "description": "Release build using MinGW Makefiles and vcpkg"
     },
@@ -26,7 +28,9 @@
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-        "VCPKG_TARGET_TRIPLET": "x64-mingw-static"
+        "VCPKG_TARGET_TRIPLET": "x64-mingw-static",
+        "CMAKE_CXX_COMPILER": "$env{CMAKE_CXX_COMPILER}",
+        "CMAKE_C_COMPILER": "$env{CMAKE_C_COMPILER}"
       },
       "description": "Debug build using MinGW Makefiles and vcpkg"
     }
