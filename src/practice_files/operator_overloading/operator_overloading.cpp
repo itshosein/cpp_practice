@@ -4,10 +4,12 @@
 #include <fmt/core.h>
 #include <iostream>
 #include <memory>
+// #include <utility>
 
 namespace OpOverload {
 
 void operator_overloading_func() {
+  // using namespace std::rel_ops;
   auto p_point1{std::make_unique<Point>(12.231, 44.23)};
   (*p_point1)[0] = 13;
   (*p_point1)[1] = 15.99;
@@ -37,8 +39,19 @@ void operator_overloading_func() {
   *p_point4 = *p_point3; // copy assignment!
 
   auto p_point6{
-      std::make_unique<Point>()}; // default constructor for instantiating
-  (*p_point6)();                  // call to operator () on this object
+      std::make_unique<Point>(2, 3)}; // default constructor for instantiating
+  (*p_point6)();                      // call to operator () on this object
+
+  fmt::print(fg(fmt::color::blue), "(*p_point1) == (*p_point2): {}\n",
+             (*p_point1) == (*p_point2));
+  fmt::print(fg(fmt::color::blue), "(*p_point1) < (*p_point2): {}\n",
+             (*p_point1) < (*p_point2));
+  fmt::print(fg(fmt::color::blue), "(*p_point1) != (*p_point2): {}\n",
+             (*p_point1) != (*p_point2));
+  fmt::print(fg(fmt::color::blue), "(*p_point1) > (*p_point2): {}\n",
+             (*p_point1) > (*p_point2));
+  fmt::print(fg(fmt::color::blue), "(*p_point1) >= (*p_point2): {}\n",
+             (*p_point1) >= (*p_point2));
 }
 
 void check_even(const std::vector<double> &v) {

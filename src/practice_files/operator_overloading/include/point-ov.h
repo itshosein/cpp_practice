@@ -1,6 +1,7 @@
 #ifndef POINT_OP_OV_H
 #define POINT_OP_OV_H
 
+#include "operators_util.h"
 #include <fmt/color.h>
 #include <fmt/core.h>
 #include <istream>
@@ -22,13 +23,16 @@ class Point {
   friend Point operator++(Point &p, int);
   friend void operator--(Point &p);
   friend Point operator--(Point &p, int);
+  friend bool operator==(const Point &lhs, const Point &rhs);
+  friend bool operator<(const Point &lhs, const Point &rhs);
 
 private:
   double m_x{};
   double m_y{};
+  double m_distance{};
 
 public:
-  Point() = default;
+  Point() = delete;
 
   Point(double x, double y);
 
@@ -71,6 +75,15 @@ inline std::istream &operator>>(std::istream &is, Point &p) {
 
   return is;
 }
+
+inline bool operator==(const Point &lhs, const Point &rhs) {
+  return lhs.m_distance == rhs.m_distance;
+}
+
+inline bool operator<(const Point &lhs, const Point &rhs) {
+  return lhs.m_distance < rhs.m_distance;
+}
+
 } // namespace OpOverload
 
 #endif
