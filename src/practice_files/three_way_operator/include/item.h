@@ -25,9 +25,11 @@ public:
   ~Item();
 
   /**
-   * default of three way comparision (spaceship) will do three way as member
-   * wise and produce == and and then !=
-   * <,<= ,>,>= ,these two for defaulting ==, !=
+   * three way comparision (spaceship) will do three way as member
+   * wise and produce <,<= ,>,>=  because of default  == and != will be produced
+   * if you create costume <=> you have to create
+   * bool operator==(const Item &rhs) const;
+   * as well
    * @returns std::strong_ordering (int or double) or std::weak_ordering
    * (std::string) or partial_ordering (nan with double)
    */
