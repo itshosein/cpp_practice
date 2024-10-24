@@ -6,6 +6,9 @@
 
 namespace Oop {
 class Person {
+public:
+  int test{};
+
 protected:
   unsigned int m_age{};
   std::string_view m_name{};

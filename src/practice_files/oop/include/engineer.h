@@ -12,7 +12,7 @@ namespace Oop {
 //  public ->  everything as base class
 //  protected -> public members become protected in derived class
 //  private -> all public and protected members become private to derived class
-class Engineer : public Oop::Person {
+class Engineer : protected Oop::Person { // test property will be protected!
   friend std::ostream &operator<<(std::ostream &os, const Engineer &e);
 
 private:
