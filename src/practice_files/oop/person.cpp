@@ -60,4 +60,5 @@ std::string Person::get_info() {
                      this->get_name(), this->get_age(),
                      this->m_count_print_info);
 }
+size_t Person::get_count_print_info() const { return m_count_print_info; }
 } // namespace Oop

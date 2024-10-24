@@ -11,7 +11,9 @@ int main(int argc, char *argv[]) {
   //            UnixTime::get_unix_time());
   // FunctionMisfits::functions_misfit();
   // OpOverload::operator_overloading_func();
-  ThreeWayOp::three_way_func();
+  // ThreeWayOp::three_way_func();
+
+  Oop::class_func();
   // try {
   //   std::ofstream file{"test.txt"};
   //   file << "Hello, World!\nso niiiiiiiiiiiiice";

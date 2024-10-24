@@ -1,5 +1,6 @@
 #include "class.h"
 #include "cylinder.h"
+#include "engineer.h"
 #include "person.h"
 #include "point.h"
 #include <fmt/core.h>
@@ -134,6 +135,12 @@ void class_func() {
   std::cout << p2.get_info();
   std::cout << "distance from origin is: " << p2.get_distance_from_origin()
             << std::endl;
+
+  std::cout << "\n----------- inheritance  -----------" << std::endl;
+
+  Engineer e1{"jack", 27, "programmer"};
+
+  std::cout << e1;
 
   std::cout << "\n----------- ending -----------" << std::endl;
 

@@ -6,9 +6,12 @@
 
 namespace Oop {
 class Person {
-  std::string_view m_nid{};
-  std::string_view m_name{};
+protected:
   unsigned int m_age{};
+  std::string_view m_name{};
+
+private:
+  std::string_view m_nid{};
   mutable size_t m_count_print_info{}; /*  not recommended to use! */
 
 public:
@@ -25,6 +28,7 @@ public:
   std::string_view get_name() const; // we can have overload with const
   unsigned int get_age() const;
   std::string_view get_nid() const;
+  size_t get_count_print_info() const;
 
   std::string get_info() const;
   std::string get_info();
