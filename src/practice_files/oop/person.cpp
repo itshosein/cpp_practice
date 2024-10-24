@@ -7,6 +7,9 @@ Person::Person(std::string name_param, unsigned int age_param) {
   this->set_age(age_param);
   this->set_name(name_param);
 } */
+
+namespace Oop {
+
 Person::Person(std::string_view nid_param)
     : Person{nid_param, 0} /* initializer lists with constructor delegation */ {
 }
@@ -57,3 +60,4 @@ std::string Person::get_info() {
                      this->get_name(), this->get_age(),
                      this->m_count_print_info);
 }
+} // namespace Oop

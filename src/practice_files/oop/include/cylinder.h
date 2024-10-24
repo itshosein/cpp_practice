@@ -3,6 +3,8 @@
 #include <string>
 #include <string_view>
 
+namespace Oop {
+
 class Cylinder {
   friend void print_cylinder_private(const Cylinder &c);
 
@@ -40,5 +42,7 @@ public:
 
   friend std::ostream &operator<<(std::ostream &os, const Cylinder &c);
 };
+
+} // namespace Oop
 
 #endif

@@ -4,14 +4,7 @@
 #include <fmt/core.h>
 #include <iostream>
 
-// ClassName::Method => scope resolution
-
-// class and struct are same just
-// structs are public by default and is better to use for class without methods!
-// class members are private by default
-
-// size_t Cylinder::m_cylinder_alive_count{};
-// const std::string_view Cylinder::class_string{"Cylinder"};
+namespace Oop {
 
 void Cylinder::invalidate() {
   m_name = nullptr;
@@ -90,3 +83,13 @@ std::ostream &operator<<(std::ostream &os, const Cylinder &c) {
                     c.get_height(), c.get_base_radius());
   return os; // Return the output stream
 }
+} // namespace Oop
+
+// ClassName::Method => scope resolution
+
+// class and struct are same just
+// structs are public by default and is better to use for class without methods!
+// class members are private by default
+
+// size_t Cylinder::m_cylinder_alive_count{};
+// const std::string_view Cylinder::class_string{"Cylinder"};

@@ -2,6 +2,8 @@
 #include <format>
 #include <math.h>
 
+namespace Oop {
+
 const Point Point::ORIGIN{Point{0, 0, 0}};
 
 Point::Point(const std::initializer_list<double> &list)
@@ -60,3 +62,4 @@ std::string Point::get_info() {
 
   return res;
 }
+} // namespace Oop

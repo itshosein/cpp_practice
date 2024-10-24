@@ -6,6 +6,8 @@
 #include <iostream>
 #include <vector>
 
+namespace Oop {
+
 void class_func() {
   double num1{20.99};
   double num2{44.22};
@@ -152,3 +154,5 @@ void print_cylinder_private(const Cylinder &c) {
             << " c.m_height: " << c.m_height << " c.m_name: " << c.m_name
             << std::endl;
 }
+
+} // namespace Oop

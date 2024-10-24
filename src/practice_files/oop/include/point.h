@@ -3,6 +3,7 @@
 
 #include <initializer_list>
 #include <string>
+namespace Oop {
 
 /**
  *  struct uses initializer list by default
@@ -38,5 +39,6 @@ public:
 
   std::string get_info();
 };
+} // namespace Oop
 
 #endif

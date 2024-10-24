@@ -4,6 +4,7 @@
 #include <string>
 #include <string_view>
 
+namespace Oop {
 class Person {
   std::string_view m_nid{};
   std::string_view m_name{};
@@ -28,5 +29,7 @@ public:
   std::string get_info() const;
   std::string get_info();
 };
+
+} // namespace Oop
 
 #endif

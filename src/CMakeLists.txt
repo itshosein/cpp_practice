@@ -26,8 +26,8 @@ add_executable(output ${SOURCES})
 target_link_libraries(output
 PRIVATE fmt::fmt
 # subdir_practices_library
-# subdir_oop_library
+subdir_oop_library
 # subdir_smart_pointers_library
 # subdir_op_ov_library
-subdir_three_way_library
+# subdir_three_way_library
 )
