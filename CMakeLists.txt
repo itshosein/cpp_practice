@@ -1,6 +1,6 @@
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Vcpkg toolchain file")
-
+set(VCPKG_FEATURE_FLAGS "${VCPKG_FEATURE_FLAGS} -registries")
 
 # Minimum required version of CMake
 cmake_minimum_required(VERSION 3.10)
