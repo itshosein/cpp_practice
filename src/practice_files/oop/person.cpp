@@ -18,6 +18,9 @@ Person::Person(std::string_view nid_param, unsigned int age_param,
                std::string_view name_param)
     : m_nid{nid_param}, m_name{name_param},
       m_age{age_param} /* initializer lists */ {}
+
+Person::Person(const Person &p) : Person(p.m_nid, p.m_age, p.m_name) {}
+
 Person::~Person() {
   std::cout << "person with name " << this->m_name << " has been deleted!"
             << std::endl;

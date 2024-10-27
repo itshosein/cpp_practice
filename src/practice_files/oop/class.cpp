@@ -138,9 +138,15 @@ void class_func() {
 
   std::cout << "\n----------- inheritance  -----------" << std::endl;
 
-  Engineer e1{"jack", 27, "programmer"};
+  Engineer e1("12345", 27, "hosein", "programmer");
 
   std::cout << e1;
+
+  Engineer e2(e1);
+
+  std::cout << e2;
+
+  std::cout << "\n----------- polymorphism  -----------" << std::endl;
 
   std::cout << "\n----------- ending -----------" << std::endl;
 

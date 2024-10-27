@@ -22,6 +22,7 @@ public:
   explicit Person(std::string_view nid_param);
   explicit Person(std::string_view nid_param, unsigned int age_param,
                   std::string_view name_param = "no_name");
+  Person(const Person &p);
   ~Person();
 
   Person *set_name(std::string_view name_param);
