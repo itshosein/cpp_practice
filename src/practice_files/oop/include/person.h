@@ -36,6 +36,8 @@ public:
 
   std::string get_info() const;
   std::string get_info();
+
+  virtual void work() const;
 };
 
 } // namespace Oop

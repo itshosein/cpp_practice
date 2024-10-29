@@ -1,7 +1,10 @@
 #include "person.h"
 #include <cstdint>
+#include <fmt/color.h>
+#include <fmt/core.h>
 #include <format>
 #include <iostream>
+
 /* member wise copy initialization
 Person::Person(std::string name_param, unsigned int age_param) {
   this->set_age(age_param);
@@ -64,4 +67,10 @@ std::string Person::get_info() {
                      this->m_count_print_info);
 }
 size_t Person::get_count_print_info() const { return m_count_print_info; }
+
+void Person::work() const {
+  fmt::print(fg(fmt::color::blue),
+             "Person::work: person with name {} is working\n",
+             this->get_name());
+}
 } // namespace Oop

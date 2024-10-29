@@ -148,6 +148,21 @@ void class_func() {
 
   std::cout << "\n----------- polymorphism  -----------" << std::endl;
 
+  Person per1("12312331", 44, "john");
+  Engineer e3("123451231", 30, "jack", "architect");
+
+  p_work(&per1);
+  p_work(&e3);
+  p_work(per1);
+  p_work(e3);
+
+  Person *p_arr[]{&per1, &e1, &e2, &e3};
+  for (auto &i : p_arr) {
+    fmt::print(fg(fmt::color::blue),
+               "\n\nInside for of person polymorphic objects:\n");
+    i->work();
+  }
+
   std::cout << "\n----------- ending -----------" << std::endl;
 
   delete p_c3;
@@ -166,6 +181,17 @@ void print_cylinder_private(const Cylinder &c) {
   std::cout << "c.m_base_radius : " << c.m_base_radius
             << " c.m_height: " << c.m_height << " c.m_name: " << c.m_name
             << std::endl;
+}
+
+void p_work(Person *const p) {
+  fmt::print(fg(fmt::color::blue), "inside p_work(Person *const p) : ");
+  p->work();
+}
+
+void p_work(const Person &p) {
+  fmt::print(fg(fmt::color::blue), "inside p_work(const Person &p) : ");
+
+  p.work();
 }
 
 } // namespace Oop

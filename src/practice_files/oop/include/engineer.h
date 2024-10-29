@@ -12,10 +12,11 @@ namespace Oop {
 //  public ->  everything as base class
 //  protected -> public members become protected in derived class
 //  private -> all public and protected members become private to derived class
-class Engineer : protected Oop::Person { // test property will be protected!
+class Engineer
+    : public Oop::Person { // in protected=>test property will be protected!
   friend std::ostream &operator<<(std::ostream &os, const Engineer &e);
 
-private:
+public:
   std::string_view m_field{};
 
 public:
@@ -25,11 +26,13 @@ public:
 
   Engineer(const Engineer &e);
 
+  ~Engineer();
+
   Engineer *set_field(std::string_view field);
 
   std::string_view get_field() const;
 
-  ~Engineer();
+  virtual void work() const;
 };
 
 inline std::ostream &operator<<(std::ostream &os, const Engineer &e) {
