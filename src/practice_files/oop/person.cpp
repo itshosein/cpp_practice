@@ -73,4 +73,5 @@ void Person::work() const {
              "Person::work: person with name {} is working\n",
              this->get_name());
 }
+
 } // namespace Oop

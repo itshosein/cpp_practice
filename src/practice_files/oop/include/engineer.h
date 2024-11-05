@@ -16,7 +16,7 @@ class Engineer
     : public Oop::Person { // in protected=>test property will be protected!
   friend std::ostream &operator<<(std::ostream &os, const Engineer &e);
 
-public:
+protected:
   std::string_view m_field{};
 
 public:
@@ -32,7 +32,7 @@ public:
 
   std::string_view get_field() const;
 
-  virtual void work() const;
+  virtual void work() const override;
 };
 
 inline std::ostream &operator<<(std::ostream &os, const Engineer &e) {

@@ -148,6 +148,9 @@ void class_func() {
 
   std::cout << "\n----------- polymorphism  -----------" << std::endl;
 
+  // virtualizing or dynamic binding or polymorphism approximately adds 8 byte
+  // of size to object
+
   Person per1("12312331", 44, "john");
   Engineer e3("123451231", 30, "jack", "architect");
 
@@ -162,6 +165,11 @@ void class_func() {
                "\n\nInside for of person polymorphic objects:\n");
     i->work();
   }
+
+  fmt::print(fg(fmt::color::blue), "sizeof(per1): {}\n",
+             sizeof(per1)); // dynamic => 56 static => 48
+  fmt::print(fg(fmt::color::blue), "sizeof(e3): {}\n",
+             sizeof(e3)); // dynamic => 72 static => 64
 
   std::cout << "\n----------- ending -----------" << std::endl;
 
