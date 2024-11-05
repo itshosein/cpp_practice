@@ -1,5 +1,5 @@
-#include "smart_pointers.h"
-#include "cat.h"
+#include "smart_pointers.hpp"
+#include "cat.hpp"
 #include <fmt/color.h>
 #include <fmt/core.h>
 

@@ -1,5 +1,5 @@
-#ifndef OPERATORS_UTIL_H
-#define OPERATORS_UTIL_H
+#ifndef OPERATORS_UTIL_HPP
+#define OPERATORS_UTIL_HPP
 
 namespace OpOverload {
 template <class T> bool operator!=(const T &lhs, const T &rhs) {

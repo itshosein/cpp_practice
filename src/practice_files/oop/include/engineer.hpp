@@ -1,7 +1,7 @@
-#ifndef ENGINEER_H
-#define ENGINEER_H
+#ifndef ENGINEER_HPP
+#define ENGINEER_HPP
 
-#include "person.h"
+#include "person.hpp"
 #include <fmt/color.h>
 #include <fmt/core.h>
 #include <iostream>

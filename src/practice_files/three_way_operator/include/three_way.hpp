@@ -1,5 +1,5 @@
-#ifndef THREE_WAY_H
-#define THREE_WAY_H
+#ifndef THREE_WAY_HPP
+#define THREE_WAY_HPP
 
 namespace ThreeWayOp {
 

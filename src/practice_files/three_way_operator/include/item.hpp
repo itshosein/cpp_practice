@@ -1,5 +1,5 @@
-#if !defined(ITEM_H)
-#define ITEM_H
+#if !defined(ITEM_HPP)
+#define ITEM_HPP
 
 #include <fmt/color.h>
 #include <fmt/core.h>
@@ -71,4 +71,4 @@ inline std::ostream &operator<<(std::ostream &os, const InnerItem &ii) {
 }
 
 } // namespace ThreeWayOp
-#endif // ITEM_H
+#endif // ITEM_HPP

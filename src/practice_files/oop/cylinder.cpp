@@ -1,5 +1,5 @@
-#include "cylinder.h"
-#include "constants.h"
+#include "cylinder.hpp"
+#include "constants.hpp"
 #include <fmt/color.h>
 #include <fmt/core.h>
 #include <iostream>

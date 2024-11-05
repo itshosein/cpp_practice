@@ -1,5 +1,5 @@
-#include "class.h"
-// #include "unix_time.h"
+#include "class.hpp"
+// #include "unix_time.hpp"
 #include <fmt/color.h>
 #include <fmt/core.h>
 

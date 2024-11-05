@@ -1,7 +1,7 @@
-#ifndef CLASS_H
-#define CLASS_H
-#include "cylinder.h"
-#include "person.h"
+#ifndef CLASS_HPP
+#define CLASS_HPP
+#include "cylinder.hpp"
+#include "person.hpp"
 
 namespace Oop {
 

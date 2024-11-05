@@ -1,4 +1,4 @@
-#include "namespace.h"
+#include "namespace.hpp"
 #include <fmt/color.h>
 #include <fmt/core.h>
 

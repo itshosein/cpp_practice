@@ -1,5 +1,5 @@
-#ifndef NAMESPACE_H
-#define NAMESPACE_H
+#ifndef NAMESPACE_HPP
+#define NAMESPACE_HPP
 
 double add(const double &x, const double &y);
 

@@ -1,8 +1,8 @@
-#include "class.h"
-#include "cylinder.h"
-#include "engineer.h"
-#include "person.h"
-#include "point.h"
+#include "class.hpp"
+#include "cylinder.hpp"
+#include "engineer.hpp"
+#include "person.hpp"
+#include "point.hpp"
 #include <fmt/core.h>
 #include <iostream>
 #include <vector>

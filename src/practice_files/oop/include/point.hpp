@@ -1,5 +1,5 @@
-#ifndef POINT_OOP_H
-#define POINT_OOP_H
+#ifndef POINT_OOP_HPP
+#define POINT_OOP_HPP
 
 #include <initializer_list>
 #include <string>

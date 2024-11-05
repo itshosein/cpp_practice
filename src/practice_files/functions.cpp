@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "functions.hpp"
 #include <array>
 #include <cstring>
 #include <iostream>
@@ -94,7 +94,7 @@ void say_hello(std::string_view name) {
 }
 
 // constexpr int multiply(int value1, int value2) { return value1 * value2; }
-// only one spot for definition and that is .h file
+// only one spot for definition and that is .hpp file
 
 // Return by reference
 int &max_ref(int &num1, int &num2) {

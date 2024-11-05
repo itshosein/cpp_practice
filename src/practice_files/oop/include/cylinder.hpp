@@ -1,5 +1,5 @@
-#ifndef CYLINDER_H
-#define CYLINDER_H
+#ifndef CYLINDER_HPP
+#define CYLINDER_HPP
 #include <string>
 #include <string_view>
 

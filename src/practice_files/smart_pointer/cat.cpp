@@ -1,4 +1,4 @@
-#include "cat.h"
+#include "cat.hpp"
 #include <fmt/color.h>
 #include <fmt/core.h>
 

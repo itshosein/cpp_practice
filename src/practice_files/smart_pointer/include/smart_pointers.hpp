@@ -1,5 +1,5 @@
-#ifndef SMART_POINTERS_H
-#define SMART_POINTERS_H
+#ifndef SMART_POINTERS_HPP
+#define SMART_POINTERS_HPP
 #include <memory>
 
 namespace CostumeClasses {

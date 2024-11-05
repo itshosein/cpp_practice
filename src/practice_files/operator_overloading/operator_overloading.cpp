@@ -1,5 +1,5 @@
-#include "operator_overloading.h"
-#include "point-ov.h"
+#include "operator_overloading.hpp"
+#include "point-ov.hpp"
 #include <fmt/color.h>
 #include <fmt/core.h>
 #include <iostream>

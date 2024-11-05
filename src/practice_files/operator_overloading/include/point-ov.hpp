@@ -1,7 +1,7 @@
-#ifndef POINT_OP_OV_H
-#define POINT_OP_OV_H
+#ifndef POINT_OP_OV_HPP
+#define POINT_OP_OV_HPP
 
-#include "operators_util.h"
+#include "operators_util.hpp"
 #include <fmt/color.h>
 #include <fmt/core.h>
 #include <istream>

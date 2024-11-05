@@ -1,4 +1,4 @@
-#include "exercise.h"
+#include "exercise.hpp"
 #include <format>
 #include <iostream>
 #include <unordered_map>
