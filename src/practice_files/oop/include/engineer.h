@@ -33,13 +33,11 @@ public:
   std::string_view get_field() const;
 
   virtual void work() const override;
-
-  virtual void work(double end_hour) const;
-
   /*
-   if we want to use other overloads of work function we have to implement them,
-   otherwise they are hidden by default
-   */
+    if we want to use other overloads of work function we have to implement
+    them, otherwise they are hidden by default
+  */
+  virtual void work(double end_hour) const;
   virtual void work(std::string_view work_param) const;
 };
 
