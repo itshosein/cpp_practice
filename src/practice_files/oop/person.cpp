@@ -74,4 +74,10 @@ void Person::work() const {
              this->get_name());
 }
 
+void Person::work(int start_hour) const {
+  fmt::print(fg(fmt::color::blue),
+             "Person::work: person with name {} is working from {}\n",
+             this->get_name(), start_hour);
+}
+
 } // namespace Oop

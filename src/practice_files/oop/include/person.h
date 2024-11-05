@@ -38,6 +38,7 @@ public:
   std::string get_info();
 
   virtual void work() const;
+  virtual void work(int start_hour) const;
 };
 
 } // namespace Oop

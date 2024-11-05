@@ -159,11 +159,20 @@ void class_func() {
   p_work(per1);
   p_work(e3);
 
+  // e3.work(20); // will not work because work overload became hidden
+  e3.work(8.8);
+
   Person *p_arr[]{&per1, &e1, &e2, &e3};
   for (auto &i : p_arr) {
     fmt::print(fg(fmt::color::blue),
                "\n\nInside for of person polymorphic objects:\n");
     i->work();
+    i->work(8); // works!
+    // i->work("param!!");// not works because this overload is only available
+    // in engineer polymorphism level
+
+    i->work(
+        10.9); // instead this one will be implicitly converted to int version
   }
 
   fmt::print(fg(fmt::color::blue), "sizeof(per1): {}\n",

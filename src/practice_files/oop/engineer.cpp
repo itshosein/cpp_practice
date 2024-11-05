@@ -24,4 +24,15 @@ void Engineer::work() const {
              this->get_name());
 }
 
+void Engineer::work(double end_hour) const {
+  fmt::print(fg(fmt::color::blue),
+             "Engineer::work: Engineer with name {} is working until {}\n",
+             this->get_name(), end_hour);
+}
+void Engineer::work(std::string_view work_param) const {
+  fmt::print(fg(fmt::color::blue),
+             "Engineer::work: Engineer with name {} is working with param {}\n",
+             this->get_name(), work_param);
+}
+
 } // namespace Oop

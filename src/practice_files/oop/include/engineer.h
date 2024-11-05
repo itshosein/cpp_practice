@@ -33,6 +33,9 @@ public:
   std::string_view get_field() const;
 
   virtual void work() const override;
+
+  virtual void work(double end_hour) const;
+  virtual void work(std::string_view work_param) const;
 };
 
 inline std::ostream &operator<<(std::ostream &os, const Engineer &e) {
