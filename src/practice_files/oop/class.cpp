@@ -183,6 +183,10 @@ void class_func() {
   fmt::print(fg(fmt::color::blue), "sizeof(e3): {}\n",
              sizeof(e1)); // dynamic => 72 static => 64
 
+  fmt::print(fg(fmt::color::blue_violet), "Person::m_count: {}\n", Person::m_count);
+  fmt::print(fg(fmt::color::blue_violet), "Engineer::m_count: {}\n",
+             Engineer::m_count);
+
   std::cout << "\n----------- ending -----------" << std::endl;
 
   delete p_c3;

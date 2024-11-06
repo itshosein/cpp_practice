@@ -2,6 +2,7 @@
 #define ENGINEER_HPP
 
 #include "person.hpp"
+#include <cstdlib>
 #include <fmt/color.h>
 #include <fmt/core.h>
 #include <iostream>
@@ -15,6 +16,9 @@ namespace Oop {
 class Engineer
     : public Oop::Person { // in protected=>test property will be protected!
   friend std::ostream &operator<<(std::ostream &os, const Engineer &e);
+
+public:
+  static size_t m_count;
 
 protected:
   std::string_view m_field{};

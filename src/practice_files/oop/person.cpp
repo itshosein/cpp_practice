@@ -1,5 +1,6 @@
 #include "person.hpp"
 #include <cstdint>
+#include <cstdlib>
 #include <fmt/color.h>
 #include <fmt/core.h>
 #include <format>
@@ -13,6 +14,8 @@ Person::Person(std::string name_param, unsigned int age_param) {
 
 namespace Oop {
 
+size_t Person::m_count{};
+
 Person::Person(std::string_view nid_param)
     : Person{nid_param, 0} /* initializer lists with constructor delegation */ {
 }
@@ -20,7 +23,9 @@ Person::Person(std::string_view nid_param)
 Person::Person(std::string_view nid_param, unsigned int age_param,
                std::string_view name_param)
     : m_nid{nid_param}, m_name{name_param},
-      m_age{age_param} /* initializer lists */ {}
+      m_age{age_param} /* initializer lists */ {
+  m_count++;
+}
 
 Person::Person(const Person &p) : Person(p.m_nid, p.m_age, p.m_name) {}
 
@@ -67,6 +72,8 @@ std::string Person::get_info() {
                      this->m_count_print_info);
 }
 size_t Person::get_count_print_info() const { return m_count_print_info; }
+
+size_t Person::get_count() const { return m_count; }
 
 void Person::work() const {
   fmt::print(fg(fmt::color::blue),

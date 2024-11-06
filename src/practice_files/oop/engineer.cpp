@@ -3,11 +3,17 @@
 
 namespace Oop {
 
+size_t Engineer::m_count{};
+
 Engineer::Engineer(std::string_view nid_param, unsigned int age_param,
                    std::string_view name_param, std::string_view field)
-    : Person(nid_param, age_param, name_param), m_field{field} {}
+    : Person(nid_param, age_param, name_param), m_field{field} {
+  m_count++;
+}
 
-Engineer::Engineer(const Engineer &e) : Person(e), m_field{e.m_field} {}
+Engineer::Engineer(const Engineer &e) : Person(e), m_field{e.m_field} {
+  m_count++;
+}
 
 Engineer::~Engineer() {
   std::cout << "engineer with name " << this->m_name << " has been deleted!"

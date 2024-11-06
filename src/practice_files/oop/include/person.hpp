@@ -8,6 +8,7 @@ namespace Oop {
 class Person {
 public:
   int test{};
+  static size_t m_count;
 
 protected:
   unsigned int m_age{};
@@ -36,6 +37,8 @@ public:
 
   std::string get_info() const;
   std::string get_info();
+
+  virtual size_t get_count() const;
 
   virtual void work() const;
   virtual void work(int start_hour) const;
