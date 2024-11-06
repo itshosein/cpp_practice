@@ -183,9 +183,19 @@ void class_func() {
   fmt::print(fg(fmt::color::blue), "sizeof(e3): {}\n",
              sizeof(e1)); // dynamic => 72 static => 64
 
-  fmt::print(fg(fmt::color::blue_violet), "Person::m_count: {}\n", Person::m_count);
+  fmt::print(fg(fmt::color::blue_violet), "Person::m_count: {}\n",
+             Person::m_count);
   fmt::print(fg(fmt::color::blue_violet), "Engineer::m_count: {}\n",
              Engineer::m_count);
+
+  /*
+    because they are introduced in c++11 for backward compatibility they are not
+    keywords! but not recommended to use them as names!
+   */
+  double final{22.33};
+  std::string override{"override"};
+  fmt::print(fg(fmt::color::chocolate), "final: {}, override: {},\n", final,
+             override);
 
   std::cout << "\n----------- ending -----------" << std::endl;
 

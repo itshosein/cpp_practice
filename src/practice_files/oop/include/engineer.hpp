@@ -13,7 +13,7 @@ namespace Oop {
 //  public ->  everything as base class
 //  protected -> public members become protected in derived class
 //  private -> all public and protected members become private to derived class
-class Engineer
+class Engineer final
     : public Oop::Person { // in protected=>test property will be protected!
   friend std::ostream &operator<<(std::ostream &os, const Engineer &e);
 
@@ -36,12 +36,14 @@ public:
 
   std::string_view get_field() const;
 
-  virtual void work() const override;
+  /* virtual doesn't makes sense with final */ void work() const override final;
   /*
     if we want to use other overloads of work function we have to implement
     them, otherwise they are hidden by default
   */
-  virtual void work(int start_hour) const override;
+  /* virtual */ void work(int start_hour) const override final;
+
+  /* virtual -> doesn't makes sense with class being final */
   virtual void work(double end_hour) const;
   virtual void work(std::string_view work_param) const;
 };
