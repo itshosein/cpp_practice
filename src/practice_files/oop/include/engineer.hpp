@@ -37,6 +37,7 @@ public:
     if we want to use other overloads of work function we have to implement
     them, otherwise they are hidden by default
   */
+  virtual void work(int start_hour) const override;
   virtual void work(double end_hour) const;
   virtual void work(std::string_view work_param) const;
 };

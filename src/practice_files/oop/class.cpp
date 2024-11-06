@@ -152,17 +152,19 @@ void class_func() {
   // of size to object
 
   Person per1("12312331", 44, "john");
-  Engineer e3("123451231", 30, "jack", "architect");
+  // Engineer e3("123451231", 30, "jack", "architect");
 
   p_work(&per1);
-  p_work(&e3);
+  p_work(&e1);
   p_work(per1);
-  p_work(e3);
+  p_work(e1);
 
   // e3.work(20); // will not work because work overload became hidden
-  e3.work(8.8);
+  e1.work(8.8);
 
-  Person *p_arr[]{&per1, &e1, &e2, &e3};
+  Person *p_arr[]{&per1, &e1};
+  fmt::print(fg(fmt::color::blue),
+             "\nInside for of person polymorphic objects: ( \n");
   for (auto &i : p_arr) {
     fmt::print(fg(fmt::color::blue),
                "\n\nInside for of person polymorphic objects:\n");
@@ -174,11 +176,12 @@ void class_func() {
     i->work(
         10.9); // instead this one will be implicitly converted to int version
   }
+  fmt::print(fg(fmt::color::blue), "\n) \n");
 
   fmt::print(fg(fmt::color::blue), "sizeof(per1): {}\n",
              sizeof(per1)); // dynamic => 56 static => 48
   fmt::print(fg(fmt::color::blue), "sizeof(e3): {}\n",
-             sizeof(e3)); // dynamic => 72 static => 64
+             sizeof(e1)); // dynamic => 72 static => 64
 
   std::cout << "\n----------- ending -----------" << std::endl;
 

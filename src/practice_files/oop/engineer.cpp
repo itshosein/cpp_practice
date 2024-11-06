@@ -9,7 +9,10 @@ Engineer::Engineer(std::string_view nid_param, unsigned int age_param,
 
 Engineer::Engineer(const Engineer &e) : Person(e), m_field{e.m_field} {}
 
-Engineer::~Engineer() {}
+Engineer::~Engineer() {
+  std::cout << "engineer with name " << this->m_name << " has been deleted!"
+            << std::endl;
+}
 
 std::string_view Engineer::get_field() const { return this->m_field; }
 
@@ -19,19 +22,26 @@ Engineer *Engineer::set_field(std::string_view field) {
 }
 
 void Engineer::work() const {
+  // this->Person::work();
   fmt::print(fg(fmt::color::blue),
              "Engineer::work: Engineer with name {} is working\n",
              this->get_name());
 }
 
+void Engineer::work(int start_hour) const {
+  fmt::print(fg(fmt::color::blue),
+             "Engineer::work: Engineer with name {} is working start_hour {}\n",
+             this->get_name(), start_hour);
+}
+
 void Engineer::work(double end_hour) const {
   fmt::print(fg(fmt::color::blue),
-             "Engineer::work: Engineer with name {} is working until {}\n",
+             "Engineer::work: Engineer with name {} is working end_hour {}\n",
              this->get_name(), end_hour);
 }
 void Engineer::work(std::string_view work_param) const {
   fmt::print(fg(fmt::color::blue),
-             "Engineer::work: Engineer with name {} is working with param {}\n",
+             "Engineer::work: Engineer with name {} is working work_param {}\n",
              this->get_name(), work_param);
 }
 
