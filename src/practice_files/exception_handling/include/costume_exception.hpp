@@ -15,7 +15,7 @@ public:
   CostumeException(std::string_view msg);
 
   CostumeException(const CostumeException &ce);
-  ~CostumeException();
+  virtual ~CostumeException();
 
   virtual const char *what() const noexcept override;
 };
