@@ -30,7 +30,17 @@ void exception() {
     fmt::print(fg(fmt::color::green), "End of try block!\n");
   } catch (const char *e) {
     fmt::print(fg(fmt::color::red), "Error: {}\n", e);
-  } catch (const std::exception &e) {
+  } catch (std::exception &e) {
+
+    // down casting in favor of polymorphism
+    /*
+    CostumeException *ce1{dynamic_cast<CostumeException *>(&e)};
+    if (ce1) {
+      fmt::print(fg(fmt::color::red), "ce1->what(): {}\n", ce1->what());
+    } else {
+      fmt::print(fg(fmt::color::red), "ce1->what(): nullptr\n");
+    } */
+
     fmt::print(fg(fmt::color::red), "Error: {}\n", e.what());
   } catch (...) {
     fmt::print(fg(fmt::color::red), "outer catch all block!\n");
