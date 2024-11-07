@@ -3,6 +3,8 @@
 
 namespace ExceptionHandling {
 void exception();
+
+void terminate_func();
 } // namespace ExceptionHandling
 
 #endif
