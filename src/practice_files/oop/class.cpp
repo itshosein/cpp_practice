@@ -152,18 +152,18 @@ void class_func() {
   // virtualizing or dynamic binding or polymorphism approximately adds 8 byte
   // of size to object
 
-  Person per1("12312331", 44, "john");
+  // Person per1("12312331", 44, "john"); // person is abstract
   // Engineer e3("123451231", 30, "jack", "architect");
 
-  p_work(&per1);
+  // p_work(&per1);
   p_work(&e1);
-  p_work(per1);
+  // p_work(per1);
   p_work(e1);
 
   // e3.work(20); // will not work because work overload became hidden
   // e1.work(8.8);
 
-  Person *p_arr[]{&per1, &e1};
+  Person *p_arr[]{/* &per1 ,*/ &e1};
   fmt::print(fg(fmt::color::blue),
              "\nInside for of person polymorphic objects: ( \n");
   for (auto &i : p_arr) {
@@ -200,16 +200,36 @@ void class_func() {
                "dynamic cast failed from Person* to Engineer* \n");
   }
 
-  fmt::print(fg(fmt::color::blue), "sizeof(per1): {}\n",
-             sizeof(per1)); // dynamic => 56 static => 48
+  fmt::print(fg(fmt::color::orange),
+             "\n***************** typeid() *****************\n");
+
+  fmt::print(fg(fmt::color::sea_green), "typeid(p_ptr).name(): {} \n",
+             typeid(p_ptr).name()); // static binding
+  fmt::print(fg(fmt::color::sea_green), "typeid(*p_ptr).name(): {} \n",
+             typeid(*p_ptr).name()); // dynamic binding
+  fmt::print(fg(fmt::color::sea_green), "typeid(*en_ptr).name(): {} \n",
+             typeid(*en_ptr).name());
+
+  fmt::print(
+      fg(fmt::color::orange),
+      "\n***************** sizeof polymorphic objects *****************\n");
+
+  // fmt::print(fg(fmt::color::blue), "sizeof(per1): {}\n",
+  //            sizeof(per1)); // dynamic => 56 static => 48
   fmt::print(fg(fmt::color::blue), "sizeof(e3): {}\n",
              sizeof(e1)); // dynamic => 72 static => 64
+
+  fmt::print(
+      fg(fmt::color::orange),
+      "\n***************** static members in polymorphism *****************\n");
 
   fmt::print(fg(fmt::color::blue_violet), "Person::m_count: {}\n",
              Person::m_count);
   fmt::print(fg(fmt::color::blue_violet), "Engineer::m_count: {}\n",
              Engineer::m_count);
 
+  fmt::print(fg(fmt::color::orange),
+             "\n***************** final and override *****************\n");
   /*
     because they are introduced in c++11 for backward compatibility they are not
     keywords! but not recommended to use them as names!

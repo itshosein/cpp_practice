@@ -14,16 +14,19 @@ protected:
   unsigned int m_age{};
   std::string_view m_name{};
 
-private:
-  std::string_view m_nid{};
-  mutable size_t m_count_print_info{}; /*  not recommended to use! */
-
-public:
+  // because now person is abstract
   Person() = default;
   explicit Person(std::string_view nid_param);
   explicit Person(std::string_view nid_param, unsigned int age_param,
                   std::string_view name_param = "no_name");
   Person(const Person &p);
+
+private:
+  std::string_view m_nid{};
+  mutable size_t m_count_print_info{}; /*  not recommended to use! */
+
+public:
+  // this should be public so that we can delete the pointers
   virtual ~Person();
 
   Person *set_name(std::string_view name_param);
@@ -41,7 +44,7 @@ public:
   virtual size_t get_count() const;
 
   // virtual void work() const;
-  virtual void work(int start_hour = 8) const;
+  virtual void work(int start_hour = 8) const = 0; // make person class abstract
 };
 
 } // namespace Oop
