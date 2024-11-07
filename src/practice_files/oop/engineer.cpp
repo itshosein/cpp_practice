@@ -51,4 +51,10 @@ void Engineer::work(std::string_view work_param) const {
              this->get_name(), work_param);
 }
 
+void Engineer::stream_insert(std::ostream &os) const {
+  os << fmt::format(fg(fmt::color::cyan),
+                    "Engineer: [id: {}, name: {}, age: {}, field: {} ]\n",
+                    this->get_nid(), this->m_name, this->m_age, this->m_field);
+}
+
 } // namespace Oop

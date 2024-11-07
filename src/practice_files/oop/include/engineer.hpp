@@ -15,7 +15,6 @@ namespace Oop {
 //  private -> all public and protected members become private to derived class
 class Engineer final
     : public Oop::Person { // in protected=>test property will be protected!
-  friend std::ostream &operator<<(std::ostream &os, const Engineer &e);
 
 public:
   static size_t m_count;
@@ -56,15 +55,17 @@ private:
   /* virtual -> doesn't makes sense with class being final */
   virtual void work(double end_hour) const;
   virtual void work(std::string_view work_param) const;
+
+  virtual void stream_insert(std::ostream &os) const;
 };
 
-inline std::ostream &operator<<(std::ostream &os, const Engineer &e) {
+// inline std::ostream &operator<<(std::ostream &os, const Engineer &e) {
 
-  os << fmt::format(fg(fmt::color::cyan),
-                    "Engineer: [id: {}, name: {}, age: {}, field: {} ]\n",
-                    e.get_nid(), e.m_name, e.m_age, e.m_field);
-  return os;
-}
+//   os << fmt::format(fg(fmt::color::cyan),
+//                     "Engineer: [id: {}, name: {}, age: {}, field: {} ]\n",
+//                     e.get_nid(), e.m_name, e.m_age, e.m_field);
+//   return os;
+// }
 
 } // namespace Oop
 

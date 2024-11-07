@@ -81,10 +81,16 @@ size_t Person::get_count() const { return m_count; }
 //              this->get_name());
 // }
 
-// void Person::work(int start_hour) const {
-//   fmt::print(fg(fmt::color::blue),
-//              "Person::work: person with name {} is working start_hour {}\n",
-//              this->get_name(), start_hour);
-// }
+void Person::work(int start_hour) const {
+  fmt::print(fg(fmt::color::blue),
+             "Person::work: person with name {} is working start_hour {}\n",
+             this->get_name(), start_hour);
+}
+
+void Person::stream_insert(std::ostream &os) const {
+  os << fmt::format(fg(fmt::color::cyan),
+                    "Person: [id: {}, name: {}, age: {} ]\n", this->get_nid(),
+                    this->get_name(), this->get_age());
+}
 
 } // namespace Oop

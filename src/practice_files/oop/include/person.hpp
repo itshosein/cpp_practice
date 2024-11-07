@@ -1,11 +1,13 @@
 #ifndef PERSON_HPP
 #define PERSON_HPP
 
+#include "IStreamInsertable.hpp"
 #include <string>
 #include <string_view>
 
+
 namespace Oop {
-class Person {
+class Person : public IStreamInsertable {
 public:
   int test{};
   static size_t m_count;
@@ -44,7 +46,10 @@ public:
   virtual size_t get_count() const;
 
   // virtual void work() const;
-  virtual void work(int start_hour = 8) const = 0; // make person class abstract
+  virtual void work(int start_hour = 8) const
+      /* = 0 */; // make person class abstract
+
+  virtual void stream_insert(std::ostream &os) const;
 };
 
 } // namespace Oop
