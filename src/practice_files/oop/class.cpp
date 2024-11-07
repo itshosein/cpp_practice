@@ -185,6 +185,12 @@ void class_func() {
 
   Person *p_ptr{new Engineer("012013", 45, "michael", "worker")};
 
+  /*
+    dynamic cast is for casting base class to derived class to that we can
+    access to non polymorphic methods as well
+    dynamic cast ONLY works with references and pointers
+    (pointers are recommended)
+   */
   auto en_ptr{dynamic_cast<Engineer *>(p_ptr)};
   if (en_ptr) {
     fmt::print(fg(fmt::color::green), "dynamic cast en_ptr->get_field(): {} \n",
