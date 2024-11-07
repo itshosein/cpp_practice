@@ -13,11 +13,12 @@ private:
 public:
   CostumeException() = default;
   CostumeException(std::string_view msg);
+
+  CostumeException(const CostumeException &ce);
   ~CostumeException();
 
-  virtual const char *what() const noexcept;
+  virtual const char *what() const noexcept override;
 };
-
 
 } // namespace ExceptionHandling
 
