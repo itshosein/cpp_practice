@@ -168,7 +168,8 @@ void class_func() {
   for (auto &i : p_arr) {
     fmt::print(fg(fmt::color::blue),
                "\n\nInside for of person polymorphic objects:\n");
-    i->work();
+    i->work();  // always using the person class default argument in Engineer
+                // body
     i->work(8); // works!
     // i->work("param!!");// not works because this overload is only available
     // in engineer polymorphism level

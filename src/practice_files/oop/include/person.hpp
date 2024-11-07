@@ -40,8 +40,8 @@ public:
 
   virtual size_t get_count() const;
 
-  virtual void work() const;
-  virtual void work(int start_hour) const;
+  // virtual void work() const;
+  virtual void work(int start_hour = 8) const;
 };
 
 } // namespace Oop

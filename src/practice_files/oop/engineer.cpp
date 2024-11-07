@@ -27,12 +27,12 @@ Engineer *Engineer::set_field(std::string_view field) {
   return this;
 }
 
-void Engineer::work() const {
-  // this->Person::work();
-  fmt::print(fg(fmt::color::blue),
-             "Engineer::work: Engineer with name {} is working\n",
-             this->get_name());
-}
+// void Engineer::work() const {
+//   // this->Person::work();
+//   fmt::print(fg(fmt::color::blue),
+//              "Engineer::work: Engineer with name {} is working\n",
+//              this->get_name());
+// }
 
 void Engineer::work(int start_hour) const {
   fmt::print(fg(fmt::color::blue),

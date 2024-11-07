@@ -75,11 +75,11 @@ size_t Person::get_count_print_info() const { return m_count_print_info; }
 
 size_t Person::get_count() const { return m_count; }
 
-void Person::work() const {
-  fmt::print(fg(fmt::color::blue),
-             "Person::work: person with name {} is working\n",
-             this->get_name());
-}
+// void Person::work() const {
+//   fmt::print(fg(fmt::color::blue),
+//              "Person::work: person with name {} is working\n",
+//              this->get_name());
+// }
 
 void Person::work(int start_hour) const {
   fmt::print(fg(fmt::color::blue),

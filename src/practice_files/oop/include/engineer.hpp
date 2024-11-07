@@ -41,12 +41,17 @@ public:
     important
    */
 private:
-  /* virtual doesn't makes sense with final */ void work() const override final;
+  // /* virtual doesn't makes sense with final */ void work() const override
+  // final;
   /*
     if we want to use other overloads of work function we have to implement
     them, otherwise they are hidden by default
   */
-  /* virtual */ void work(int start_hour) const override final;
+  /*
+    in polymorphism default argument of child is ignored because it is compile
+    time
+  */
+  /* virtual */ void work(int start_hour = 10) const override final;
 
   /* virtual -> doesn't makes sense with class being final */
   virtual void work(double end_hour) const;
