@@ -19,8 +19,8 @@ void exception() {
     fmt::print(fg(fmt::color::green), "End of try block!\n");
   } catch (const char *e) {
     fmt::print(fg(fmt::color::red), "Error: {}\n", e);
-  } catch (const CostumeException &ce) {
-    fmt::print(fg(fmt::color::red), "Error: {}\n", ce.what());
+  } catch (const std::exception &e)  {
+    fmt::print(fg(fmt::color::red), "Error: {}\n", e.what());
   }
   fmt::print(fg(fmt::color::green), "after try catch block!\n");
 }
