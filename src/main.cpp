@@ -1,4 +1,4 @@
-#include "class.hpp"
+#include "exception.hpp"
 // #include "unix_time.hpp"
 #include <fmt/color.h>
 #include <fmt/core.h>
@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
   // OpOverload::operator_overloading_func();
   // ThreeWayOp::three_way_func();
 
-  Oop::class_func();
+  ExceptionHandling::exception();
   // try {
   //   std::ofstream file{"test.txt"};
   //   file << "Hello, World!\nso niiiiiiiiiiiiice";
