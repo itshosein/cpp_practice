@@ -178,11 +178,21 @@ void class_func() {
     i->work(
         10.9); // instead this one will be implicitly converted to int version
   }
+  fmt::print(fg(fmt::color::blue), "\n) \n");
 
   std::unique_ptr<Person> p_per_e{
       std::make_unique<Engineer>("012013", 25, "jack22", "Teacher")};
 
-  fmt::print(fg(fmt::color::blue), "\n) \n");
+  Person *p_ptr{new Engineer("012013", 45, "michael", "worker")};
+
+  auto en_ptr{dynamic_cast<Engineer *>(p_ptr)};
+  if (en_ptr) {
+    fmt::print(fg(fmt::color::green), "dynamic cast en_ptr->get_field(): {} \n",
+               en_ptr->get_field());
+  } else {
+    fmt::print(fg(fmt::color::green),
+               "dynamic cast failed from Person* to Engineer* \n");
+  }
 
   fmt::print(fg(fmt::color::blue), "sizeof(per1): {}\n",
              sizeof(per1)); // dynamic => 56 static => 48
@@ -205,6 +215,8 @@ void class_func() {
 
   std::cout << "\n----------- ending -----------" << std::endl;
 
+  delete p_ptr;
+  delete en_ptr;
   delete p_c3;
   p_c3 = nullptr;
 }
