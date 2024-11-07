@@ -36,6 +36,11 @@ public:
 
   std::string_view get_field() const;
 
+  /*
+    virtual methods access modifier are ignored! only the base class is
+    important
+   */
+private:
   /* virtual doesn't makes sense with final */ void work() const override final;
   /*
     if we want to use other overloads of work function we have to implement

@@ -160,7 +160,7 @@ void class_func() {
   p_work(e1);
 
   // e3.work(20); // will not work because work overload became hidden
-  e1.work(8.8);
+  // e1.work(8.8);
 
   Person *p_arr[]{&per1, &e1};
   fmt::print(fg(fmt::color::blue),
