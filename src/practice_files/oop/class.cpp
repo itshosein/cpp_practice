@@ -5,6 +5,7 @@
 #include "point.hpp"
 #include <fmt/core.h>
 #include <iostream>
+#include <memory>
 #include <vector>
 
 namespace Oop {
@@ -142,9 +143,9 @@ void class_func() {
 
   std::cout << e1;
 
-  Engineer e2(e1);
+  // Engineer e2(e1);
 
-  std::cout << e2;
+  // std::cout << e2;
 
   std::cout << "\n----------- polymorphism  -----------" << std::endl;
 
@@ -177,6 +178,10 @@ void class_func() {
     i->work(
         10.9); // instead this one will be implicitly converted to int version
   }
+
+  std::unique_ptr<Person> p_per_e{
+      std::make_unique<Engineer>("012013", 25, "jack22", "Teacher")};
+
   fmt::print(fg(fmt::color::blue), "\n) \n");
 
   fmt::print(fg(fmt::color::blue), "sizeof(per1): {}\n",

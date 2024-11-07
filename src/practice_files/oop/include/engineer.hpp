@@ -30,7 +30,7 @@ public:
 
   Engineer(const Engineer &e);
 
-  ~Engineer();
+  virtual ~Engineer();
 
   Engineer *set_field(std::string_view field);
 

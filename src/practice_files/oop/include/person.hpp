@@ -24,7 +24,7 @@ public:
   explicit Person(std::string_view nid_param, unsigned int age_param,
                   std::string_view name_param = "no_name");
   Person(const Person &p);
-  ~Person();
+  virtual ~Person();
 
   Person *set_name(std::string_view name_param);
   Person *set_age(unsigned int age_param);
