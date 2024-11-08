@@ -8,11 +8,13 @@
 
 /*
   we have to put definition into header file because the compiler should see and
-  generate templates and all the methods are inline in template classes
+  generate templates and all the methods are inline in template classes by
+  default
  */
 
 namespace ClassTemplates {
-template <typename T> class DataWrapper /*  : IStreamInsertable */ {
+template <typename T /*, size_t maximum -> None Type template argument! BAD: multiple instances and ugly code base! */>
+class DataWrapper /*  : IStreamInsertable */ {
   // friend std::ostream &operator<<(std::ostream &os, const DataWrapper<T> &d);
 
 private:
