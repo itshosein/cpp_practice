@@ -1,4 +1,4 @@
-#include "exception.hpp"
+#include "class_template.hpp"
 // #include "unix_time.hpp"
 #include <fmt/color.h>
 #include <fmt/core.h>
@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
   // OpOverload::operator_overloading_func();
   // ThreeWayOp::three_way_func();
 
-  ExceptionHandling::exception();
+  ClassTemplates::class_templates();
   // try {
   //   std::ofstream file{"test.txt"};
   //   file << "Hello, World!\nso niiiiiiiiiiiiice";
