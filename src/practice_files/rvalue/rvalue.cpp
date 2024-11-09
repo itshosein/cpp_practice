@@ -28,6 +28,19 @@ void rvalue_func() {
 
   fmt::print(fg(fmt::color::blue), "c: {}\n", c);
   fmt::print(fg(fmt::color::blue), "moved_c: {}\n", moved_c);
+
+  int *int_ptr{new int{20123}};
+  int *&&moved_ptr{std::move(int_ptr)};
+
+  *int_ptr = 2;
+
+  fmt::print(fg(fmt::color::blue), "int_ptr: {}\n", *int_ptr);
+  fmt::print(fg(fmt::color::blue), "moved_ptr: {}\n", *moved_ptr);
+
+  delete int_ptr;
+  // delete moved_ptr; // crash! releasing one memory twice!
+
+  fmt::print(fg(fmt::color::blue), "Done.\n");
 }
 
 int add(const int &a, const int &b) { return a + b; }
