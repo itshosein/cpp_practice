@@ -15,7 +15,10 @@
 namespace ClassTemplates {
 template <typename T = int /*, size_t maximum -> None Type template argument! BAD: multiple instances and ugly code base! */>
 class DataWrapper /*  : IStreamInsertable */ {
-  // friend std::ostream &operator<<(std::ostream &os, const DataWrapper<T> &d);
+
+  // have to say this function is template with <T> after name!
+  friend std::ostream &operator<< <T>(std::ostream &os,
+                                      const DataWrapper<T> &d);
 
 private:
   T m_data{};
@@ -26,8 +29,6 @@ public:
   DataWrapper(const DataWrapper &p);
   virtual ~DataWrapper();
 
-  T get_data() const;
-
   // virtual void stream_insert(std::ostream &os) const override;
 };
 
@@ -37,6 +38,8 @@ public:
   default
  */
 template <> class DataWrapper<char *> {
+  friend std::ostream &operator<< (std::ostream &os,
+                                           const DataWrapper<char *> &d);
 
 private:
   char *m_data{};
@@ -46,8 +49,6 @@ public:
   DataWrapper(char *data);
   DataWrapper(const DataWrapper &p);
   virtual ~DataWrapper();
-
-  char *get_data() const;
 
   // virtual void stream_insert(std::ostream &os) const override;
 };
@@ -59,13 +60,9 @@ DataWrapper<T>::DataWrapper(const DataWrapper &p) : DataWrapper(p.m_data) {}
 
 template <typename T> DataWrapper<T>::~DataWrapper() {}
 
-template <typename T> T DataWrapper<T>::get_data() const {
-  return this->m_data;
-}
-
 template <typename T>
 std::ostream &operator<<(std::ostream &os, const DataWrapper<T> &d) {
-  os << fmt::format(fg(fmt::color::blue), "m_data: {}\n", d.get_data());
+  os << fmt::format(fg(fmt::color::blue), "m_data: {}\n", d.m_data);
   return os;
 }
 

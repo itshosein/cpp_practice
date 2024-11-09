@@ -1,6 +1,7 @@
 #include "data_wrapper.hpp"
 
 namespace ClassTemplates {
+
 /* template <typename T> DataWrapper<T>::DataWrapper(T data) : m_data{data} {}
 
 template <typename T>
@@ -23,6 +24,10 @@ DataWrapper<char *>::DataWrapper(const DataWrapper &p)
 
 DataWrapper<char *>::~DataWrapper() {}
 
-char *DataWrapper<char *>::get_data() const { return this->m_data; }
+// specialized << for char *
+std::ostream &operator<<(std::ostream &os, const DataWrapper<char *> &d) {
+  os << fmt::format(fg(fmt::color::blue), "m_data: {}\n", d.m_data);
+  return os;
+}
 
 } // namespace ClassTemplates
