@@ -31,6 +31,27 @@ public:
   // virtual void stream_insert(std::ostream &os) const override;
 };
 
+/*
+  specialize template class
+  is a full class and separate from template class and it is not inline by
+  default
+ */
+template <> class DataWrapper<char *> {
+
+private:
+  char *m_data{};
+
+public:
+  DataWrapper() = default;
+  DataWrapper(char *data);
+  DataWrapper(const DataWrapper &p);
+  virtual ~DataWrapper();
+
+  char *get_data() const;
+
+  // virtual void stream_insert(std::ostream &os) const override;
+};
+
 template <typename T> DataWrapper<T>::DataWrapper(T data) : m_data{data} {}
 
 template <typename T>
