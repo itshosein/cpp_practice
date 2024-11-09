@@ -5,6 +5,7 @@
 #include <fmt/color.h>
 #include <fmt/core.h>
 #include <ostream>
+#include <type_traits>
 
 /*
   we have to put definition into header file because the compiler should see and
@@ -16,6 +17,8 @@ namespace ClassTemplates {
 template <typename T = int /*, size_t maximum -> None Type template argument! BAD: multiple instances and ugly code base! */>
 class DataWrapper /*  : IStreamInsertable */ {
 
+  static_assert(std::is_arithmetic_v<T>,
+                "DataWrapper should only have arithmetic type");
   // have to say this function is template with <T> after name!
   friend std::ostream &operator<< <T>(std::ostream &os,
                                       const DataWrapper<T> &d);
@@ -38,8 +41,8 @@ public:
   default
  */
 template <> class DataWrapper<char *> {
-  friend std::ostream &operator<< (std::ostream &os,
-                                           const DataWrapper<char *> &d);
+  friend std::ostream &operator<<(std::ostream &os,
+                                  const DataWrapper<char *> &d);
 
 private:
   char *m_data{};
