@@ -15,6 +15,7 @@ void DataWrapper<T>::stream_insert(std::ostream &os) const {
 }
 */
 
+// template specialized implementations because they are inline!
 DataWrapper<char *>::DataWrapper(char *data) : m_data{data} {}
 
 DataWrapper<char *>::DataWrapper(const DataWrapper &p)
