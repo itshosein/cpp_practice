@@ -1,7 +1,11 @@
-#include "person.hpp"
+#include "data_wrapper.hpp"
 #include <iostream>
 
 namespace ClassTemplates {
+
+// explicit template instantiating with all methods only for debug purposes
+template class DataWrapper<int>;
+
 void class_templates() {
   DataWrapper p1(20);
 
