@@ -2,6 +2,7 @@
 #define PERSON_TEMPLATE_HPP
 
 #include "IStreamInsertable.hpp"
+#include <concepts>
 #include <fmt/color.h>
 #include <fmt/core.h>
 #include <ostream>
@@ -15,10 +16,11 @@
 
 namespace ClassTemplates {
 template <typename T = int /*, size_t maximum -> None Type template argument! BAD: multiple instances and ugly code base! */>
+requires std::is_default_constructible_v<T> // concepts!
 class DataWrapper /*  : IStreamInsertable */ {
 
-  static_assert(std::is_arithmetic_v<T>,
-                "DataWrapper should only have arithmetic type");
+  // static_assert(std::is_arithmetic_v<T>,
+  //               "DataWrapper should only have arithmetic type");
   // have to say this function is template with <T> after name!
   friend std::ostream &operator<< <T>(std::ostream &os,
                                       const DataWrapper<T> &d);
@@ -29,7 +31,9 @@ private:
 public:
   DataWrapper() = default;
   DataWrapper(T data);
-  DataWrapper(const DataWrapper &p);
+  DataWrapper(const DataWrapper &p)
+    requires std::copyable<T>;
+  ;
   virtual ~DataWrapper();
 
   // virtual void stream_insert(std::ostream &os) const override;
@@ -56,14 +60,22 @@ public:
   // virtual void stream_insert(std::ostream &os) const override;
 };
 
-template <typename T> DataWrapper<T>::DataWrapper(T data) : m_data{data} {}
+template <typename T>
+  requires std::is_default_constructible_v<T>
+DataWrapper<T>::DataWrapper(T data) : m_data{data} {}
 
 template <typename T>
-DataWrapper<T>::DataWrapper(const DataWrapper &p) : DataWrapper(p.m_data) {}
-
-template <typename T> DataWrapper<T>::~DataWrapper() {}
+  requires std::is_default_constructible_v<T>
+DataWrapper<T>::DataWrapper(const DataWrapper &p)
+  requires std::copyable<T>
+    : DataWrapper(p.m_data) {}
 
 template <typename T>
+  requires std::is_default_constructible_v<T>
+DataWrapper<T>::~DataWrapper() {}
+
+template <typename T>
+  requires std::is_default_constructible_v<T>
 std::ostream &operator<<(std::ostream &os, const DataWrapper<T> &d) {
   os << fmt::format(fg(fmt::color::blue), "m_data: {}\n", d.m_data);
   return os;
