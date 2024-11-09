@@ -13,7 +13,7 @@
  */
 
 namespace ClassTemplates {
-template <typename T /*, size_t maximum -> None Type template argument! BAD: multiple instances and ugly code base! */>
+template <typename T = int /*, size_t maximum -> None Type template argument! BAD: multiple instances and ugly code base! */>
 class DataWrapper /*  : IStreamInsertable */ {
   // friend std::ostream &operator<<(std::ostream &os, const DataWrapper<T> &d);
 
