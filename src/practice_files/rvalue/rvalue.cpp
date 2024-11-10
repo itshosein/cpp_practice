@@ -107,6 +107,6 @@ template <class T> T getData() { return T(); }
 
 template <typename T>
 void addToData(DataWrapper<T> &&data_wrapper, T &&amount) {
-  data_wrapper.add(std::move(amount));
+  data_wrapper.add(std::move(amount)); // if amount is int this is overhead!
 }
 } // namespace Rvalue
