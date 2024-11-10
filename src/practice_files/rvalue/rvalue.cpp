@@ -1,4 +1,5 @@
 #include "rvalue.hpp"
+#include "rvalue_data_wrapper.hpp"
 #include <fmt/color.h>
 #include <fmt/core.h>
 
@@ -14,7 +15,7 @@ void rvalue_func() {
     res is a rvalue reference because a+b produces a temporary memory location
     so we use it
    */
-  double &&res{a / b};
+  /* double &&res{a / b};
 
   int &&result_of_add_func{add(a, b)};
 
@@ -39,6 +40,18 @@ void rvalue_func() {
 
   delete int_ptr;
   // delete moved_ptr; // crash! releasing one memory twice!
+
+  */
+  DataWrapper<int> data1(10);
+
+  fmt::print(fg(fmt::color::chocolate), "-----------------\n");
+
+  // here a rvalue of DataWrapper being destructed
+  data1 = create_data_wrapper(10, 20);
+
+  fmt::print(fg(fmt::color::chocolate), "-----------------\n");
+
+  fmt::print(fg(fmt::color::blue), "data1: {}.\n", data1.string());
 
   fmt::print(fg(fmt::color::blue), "Done.\n");
 }
