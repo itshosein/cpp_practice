@@ -34,6 +34,8 @@ public:
 
   std::string string();
   void invalidate();
+  DataWrapper &add(T &amount);
+  DataWrapper &add(T &&amount);
 };
 
 template <typename T> DataWrapper<T>::DataWrapper() : m_data{new T()} {
@@ -91,6 +93,16 @@ template <typename T> std::string DataWrapper<T>::string() {
 template <typename T> void DataWrapper<T>::invalidate() { m_data = nullptr; }
 
 DataWrapper<int> create_data_wrapper(int amount, int modifier);
+
+template <typename T> DataWrapper<T> &DataWrapper<T>::add(T &amount) {
+  *m_data += amount;
+  return *this;
+}
+
+template <typename T> DataWrapper<T> &DataWrapper<T>::add(T &&amount) {
+  *m_data += amount;
+  return *this;
+}
 
 } // namespace Rvalue
 

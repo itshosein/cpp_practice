@@ -42,7 +42,7 @@ void rvalue_func() {
   delete int_ptr;
   // delete moved_ptr; // crash! releasing one memory twice!
 
-  */
+
   DataWrapper<int> data1(10);
   DataWrapper<int> data2(50);
 
@@ -57,13 +57,13 @@ void rvalue_func() {
 
   fmt::print(fg(fmt::color::blue), "data1: {}\n", data1.string());
 
-  // fmt::print(fg(fmt::color::chocolate),
-  //            "----------------- swap_data_wrapper_copy -----------------\n");
+  fmt::print(fg(fmt::color::chocolate),
+             "----------------- swap_data_wrapper_copy -----------------\n");
 
-  // swap_data_wrapper_copy(data1, data2);
+  swap_data_wrapper_copy(data1, data2);
 
-  // fmt::print(fg(fmt::color::blue), "data1: {}\n", data1.string());
-  // fmt::print(fg(fmt::color::blue), "data2: {}\n", data2.string());
+  fmt::print(fg(fmt::color::blue), "data1: {}\n", data1.string());
+  fmt::print(fg(fmt::color::blue), "data2: {}\n", data2.string());
 
   fmt::print(fg(fmt::color::chocolate),
              "----------------- swap_data_wrapper_move -----------------\n");
@@ -72,6 +72,17 @@ void rvalue_func() {
 
   fmt::print(fg(fmt::color::blue), "data1: {}\n", data1.string());
   fmt::print(fg(fmt::color::blue), "data2: {}\n", data2.string());
+*/
+  fmt::print(fg(fmt::color::chocolate),
+             "----------------- move using in functions -----------------\n");
+
+  // calling a function creates rvalue that we can use!
+  DataWrapper<int> &&data3{getData<DataWrapper<int>>()};
+
+  // passing by rvalue -> because rvalue with name in arguments treats as lvalue
+  addToData(std::move(data3), std::move(10));
+
+  fmt::print(fg(fmt::color::blue), "data3: {}\n", data3.string());
 
   fmt::print(fg(fmt::color::blue), "Done.\n");
 }
@@ -90,5 +101,12 @@ template <class T> void swap_data_wrapper_move(T &a, T &b) {
   a = std::move(b);
   // move assignment to empty tmp
   b = std::move(temp);
+}
+
+template <class T> T getData() { return T(); }
+
+template <typename T>
+void addToData(DataWrapper<T> &&data_wrapper, T &&amount) {
+  data_wrapper.add(std::move(amount));
 }
 } // namespace Rvalue
