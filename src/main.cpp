@@ -1,4 +1,4 @@
-#include "rvalue.hpp"
+#include "function_entities.hpp"
 // #include "unix_time.hpp"
 #include <fmt/color.h>
 #include <fmt/core.h>
@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
   // OpOverload::operator_overloading_func();
   // ThreeWayOp::three_way_func();
 
-  Rvalue::rvalue_func();
+  FunctionEntities::function_entities();
   // try {
   //   std::ofstream file{"test.txt"};
   //   file << "Hello, World!\nso niiiiiiiiiiiiice";
