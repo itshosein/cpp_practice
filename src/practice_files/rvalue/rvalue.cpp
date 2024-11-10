@@ -47,11 +47,13 @@ void rvalue_func() {
   fmt::print(fg(fmt::color::chocolate), "-----------------\n");
 
   // here a rvalue of DataWrapper being destructed
+  // but with move assignment we can trigger a pointer steal
+  // and prevent from losing dynamic data!
   data1 = create_data_wrapper(10, 20);
 
   fmt::print(fg(fmt::color::chocolate), "-----------------\n");
 
-  fmt::print(fg(fmt::color::blue), "data1: {}.\n", data1.string());
+  fmt::print(fg(fmt::color::blue), "data1: {}\n", data1.string());
 
   fmt::print(fg(fmt::color::blue), "Done.\n");
 }
