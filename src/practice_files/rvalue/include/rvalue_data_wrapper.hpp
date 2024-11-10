@@ -46,7 +46,7 @@ DataWrapper<T>::DataWrapper(T data) : m_data{new T(data)} {
 }
 
 template <typename T>
-DataWrapper<T>::DataWrapper(const DataWrapper &p) : DataWrapper(*(p.m_data)) {
+DataWrapper<T>::DataWrapper(const DataWrapper &p) : m_data{new T{*(p.m_data)}} {
   fmt::print(fg(fmt::color::blue), "Copy constructor!\n");
 }
 
@@ -65,7 +65,8 @@ template <typename T> DataWrapper<T>::~DataWrapper() {
 
 template <typename T>
 std::ostream &operator<<(std::ostream &os, const DataWrapper<T> &d) {
-  os << fmt::format(fg(fmt::color::blue), "m_data: {}\n", d.m_data);
+  os << fmt::format(fg(fmt::color::blue), "m_data: {}\n",
+                    reinterpret_cast<uintptr_t>(d.m_data));
   return os;
 }
 
