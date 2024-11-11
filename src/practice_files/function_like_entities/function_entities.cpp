@@ -39,7 +39,7 @@ double add(double a, double b) { return a + b; }
 char encrypt(const char &input) { return static_cast<char>(input + 3); }
 char decrypt(const char &input) { return static_cast<char>(input - 3); }
 
-std::string &modify(std::string &input, char (*fn)(const char &)) {
+std::string &modify(std::string &input, fn_t fn) {
   for (size_t i{}; i < input.size(); i++) {
     input[i] = fn(input[i]);
   }
@@ -50,9 +50,7 @@ bool large_in_size(const std::string &a, const std::string &b) {
   return a.size() > b.size();
 }
 
-std::string get_best(std::vector<std::string> str_v,
-                     bool (*comparator)(const std::string &a,
-                                        const std::string &b)) {
+std::string get_best(std::vector<std::string> str_v, comparator_t comparator) {
   std::string best{};
   for (size_t i{}; i < str_v.size(); i++) {
     for (auto &j : str_v) {
