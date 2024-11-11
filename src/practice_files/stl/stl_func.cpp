@@ -57,7 +57,7 @@ void stl_func() {
   // and if you want order and random access more use vector
   std::list<int> list1{};
   list1.push_back(10);
-  list1.push_front(1);
+  list1.push_front(1); // only in list not in vector
 
   fmt::print(fg(fmt::color::green), "list1: ");
   print_list(list1);
