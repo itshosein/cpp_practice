@@ -1,6 +1,7 @@
 #include "function_entities.hpp"
 #include <fmt/color.h>
 #include <fmt/core.h>
+#include <functional>
 
 namespace FunctionEntities {
 void function_entities() {
@@ -30,8 +31,20 @@ void function_entities() {
   str_v.push_back(msg);
   str_v.push_back(msg1);
   str_v.emplace_back("WOw that is awesome");
+  std::string &&best_str{get_best(str_v, large_in_size)};
   fmt::print(fg(fmt::color::blue), "msg is best or msg2: {}\n",
-             get_best(str_v, large_in_size));
+             std::move(best_str));
+  fmt::print(fg(fmt::color::chocolate), "---------------\n");
+
+  std::plus<int> char_adder;
+
+  fmt::print(fg(fmt::color::blue), "1 + 2: {}\n",
+             static_cast<int>(char_adder(1, 2)));
+
+  std::vector<int> int_v{11, 4, 6, 40, 50};
+
+  int &&v_sum{sumInRange<int>(int_v, IsInRange<int>(0, 10))};
+  fmt::print(fg(fmt::color::blue), "sum of int_v: {}\n", v_sum);
 }
 
 double add(double a, double b) { return a + b; }
@@ -60,6 +73,18 @@ std::string get_best(std::vector<std::string> str_v, comparator_t comparator) {
     }
   }
   return best;
+}
+
+template <typename T>
+  requires std::is_arithmetic_v<T>
+T sumInRange(std::vector<T> &v, IsInRange<T> is_in_range) {
+  T res{0};
+  for (auto &el : v) {
+    if (is_in_range(el)) {
+      res += el;
+    }
+  }
+  return res;
 }
 
 } // namespace FunctionEntities
