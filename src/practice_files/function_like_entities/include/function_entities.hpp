@@ -1,4 +1,5 @@
 #include <concepts>
+#include <functional>
 #include <string>
 #include <vector>
 
@@ -37,5 +38,10 @@ public:
 
 template <typename T>
   requires std::is_arithmetic_v<T>
-T sumInRange(std::vector<T> &v, IsInRange<T> is_in_range);
+T sum_in_range(std::vector<T> &v, IsInRange<T> is_in_range);
+
+template <typename T>
+  requires std::is_arithmetic_v<T>
+T sum_in_range_modern(std::vector<T> &v,
+                      std::function<bool(int value)> is_in_range);
 } // namespace FunctionEntities

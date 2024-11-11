@@ -32,7 +32,7 @@ void function_entities() {
   str_v.push_back(msg1);
   str_v.emplace_back("WOw that is awesome");
   std::string &&best_str{get_best(str_v, large_in_size)};
-  fmt::print(fg(fmt::color::blue), "msg is best or msg2: {}\n",
+  fmt::print(fg(fmt::color::blue), "is ({}) better or ({}): {}\n", msg, msg1,
              std::move(best_str));
   fmt::print(fg(fmt::color::chocolate), "---------------\n");
 
@@ -42,8 +42,19 @@ void function_entities() {
              static_cast<int>(char_adder(1, 2)));
 
   std::vector<int> int_v{11, 4, 6, 40, 50};
-  int &&v_sum{sumInRange<int>(int_v, IsInRange<int>(0, 10))};
+  int &&v_sum{sum_in_range<int>(int_v, IsInRange<int>(0, 10))};
   fmt::print(fg(fmt::color::blue), "sum of int_v: {}\n", v_sum);
+
+  int &&v_sum1{sum_in_range_modern<int>(int_v, IsInRange<int>(10, 40))};
+  fmt::print(fg(fmt::color::blue), "v_sum1 of int_v: {}\n", v_sum1);
+
+  // int min {41};
+  // int max {50};
+  auto is_is_range_lambda{[min = 41, max = 50](int value) -> bool {
+    return value <= max && value >= min;
+  }};
+  int &&v_sum2{sum_in_range_modern<int>(int_v, is_is_range_lambda)};
+  fmt::print(fg(fmt::color::blue), "v_sum2 of int_v: {}\n", v_sum2);
 }
 
 double add(double a, double b) { return a + b; }
@@ -76,7 +87,20 @@ std::string get_best(std::vector<std::string> str_v, comparator_t comparator) {
 
 template <typename T>
   requires std::is_arithmetic_v<T>
-T sumInRange(std::vector<T> &v, IsInRange<T> is_in_range) {
+T sum_in_range(std::vector<T> &v, IsInRange<T> is_in_range) {
+  T res{0};
+  for (auto &el : v) {
+    if (is_in_range(el)) {
+      res += el;
+    }
+  }
+  return res;
+}
+
+template <typename T>
+  requires std::is_arithmetic_v<T>
+T sum_in_range_modern(std::vector<T> &v,
+                      std::function<bool(int value)> is_in_range) {
   T res{0};
   for (auto &el : v) {
     if (is_in_range(el)) {
