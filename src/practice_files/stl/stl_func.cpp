@@ -33,7 +33,7 @@ void stl_func() {
 
   fmt::print(fg(fmt::color::green), "\narr2: ");
   print_array(arr2);
-  */
+
 
   std::stack<int> stack1;
   stack1.push(1);
@@ -47,6 +47,20 @@ void stl_func() {
 
   fmt::print(fg(fmt::color::green), "stack2: ");
   print_stack(stack2);
+  */
+
+  // list is better when you want insertion from both side or in the middle
+  // as well as deletion. better complexity than vector.
+  // vector is better when accessing fast random access to elements
+  // vector maintain the order better
+  // so if you want to change the elements a lot use list
+  // and if you want order and random access more use vector
+  std::list<int> list1{};
+  list1.push_back(10);
+  list1.push_front(1);
+
+  fmt::print(fg(fmt::color::green), "list1: ");
+  print_list(list1);
 }
 
 template <typename T> void print_raw_array(const T *p, size_t size) {
@@ -66,6 +80,12 @@ template <typename T> void print_stack(std::stack<T> stack) {
   while (!stack.empty()) {
     fmt::print(fg(fmt::color::green), "{} ", stack.top());
     stack.pop();
+  }
+}
+
+template <typename T> void print_list(const std::list<T> &list) {
+  for (auto &i : list) {
+    fmt::print(fg(fmt::color::green), "{} ", i);
   }
 }
 } // namespace StlExercise
