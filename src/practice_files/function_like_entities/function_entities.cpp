@@ -42,7 +42,6 @@ void function_entities() {
              static_cast<int>(char_adder(1, 2)));
 
   std::vector<int> int_v{11, 4, 6, 40, 50};
-
   int &&v_sum{sumInRange<int>(int_v, IsInRange<int>(0, 10))};
   fmt::print(fg(fmt::color::blue), "sum of int_v: {}\n", v_sum);
 }

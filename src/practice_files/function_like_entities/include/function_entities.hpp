@@ -28,6 +28,8 @@ private:
   T m_min;
 
 public:
+  IsInRange(T min, T max) : m_min{min}, m_max{max} {}
+  IsInRange(T &min, T &max) : m_min{min}, m_max{max} {}
   IsInRange(T &&min, T &&max) : m_min{min}, m_max{max} {}
 
   bool operator()(T value) { return value <= m_max && value >= m_min; }
