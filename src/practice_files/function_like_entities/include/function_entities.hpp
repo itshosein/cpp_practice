@@ -28,7 +28,7 @@ private:
   T m_min;
 
 public:
-  IsInRange(T min, T max) : m_min{min}, m_max{max} {}
+  // IsInRange(T min, T max) : m_min{min}, m_max{max} {}
   IsInRange(T &min, T &max) : m_min{min}, m_max{max} {}
   IsInRange(T &&min, T &&max) : m_min{min}, m_max{max} {}
 
