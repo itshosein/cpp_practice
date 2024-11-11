@@ -1,4 +1,4 @@
-#include "function_entities.hpp"
+#include "stl_func.hpp"
 // #include "unix_time.hpp"
 #include <fmt/color.h>
 #include <fmt/core.h>
@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
   // OpOverload::operator_overloading_func();
   // ThreeWayOp::three_way_func();
 
-  FunctionEntities::function_entities();
+  StlExercise::stl_func();
   // try {
   //   std::ofstream file{"test.txt"};
   //   file << "Hello, World!\nso niiiiiiiiiiiiice";
