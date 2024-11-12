@@ -23,6 +23,15 @@ concept is_collection = requires(const T &collection) {
   collection.begin();
   collection.end();
 };
+template <typename T>
+concept is_reversible_collection = requires(const T &collection) {
+  collection.rbegin();
+  collection.rend();
+};
+
+template <typename T>
+  requires is_reversible_collection<T>
+void print_reverse_collection(const T &collection);
 
 template <typename T>
   requires is_collection<T>
