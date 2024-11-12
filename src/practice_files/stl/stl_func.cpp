@@ -80,7 +80,10 @@ void stl_func() {
 
   fmt::print(fg(fmt::color::green), "\nPrinting vec2 with iterators offset: ");
   print_collection(vec2, 2, 1);
-  
+
+  int raw_arr[]{1, 2, 3, 4, 5};
+  fmt::print(fg(fmt::color::green), "\nPrinting raw_arr with iterators : ");
+  print_raw_array(raw_arr);
 }
 
 template <typename T> void print_raw_array(const T *p, size_t size) {
@@ -126,6 +129,18 @@ void print_reverse_collection(const T &collection) {
   auto iterator{collection.rbegin()};
 
   while (iterator != collection.rend()) {
+    fmt::print(fg(fmt::color::green), "{} ", *iterator);
+    iterator++;
+  }
+}
+
+template <typename T>
+  requires is_reversible<T>
+void print_raw_array(const T &collection) {
+  auto iterator{std::cbegin(collection)};
+  auto end_iterator{std::cend(collection)};
+
+  while (iterator != end_iterator) {
     fmt::print(fg(fmt::color::green), "{} ", *iterator);
     iterator++;
   }

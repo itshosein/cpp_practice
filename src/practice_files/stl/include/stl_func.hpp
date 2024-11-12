@@ -24,6 +24,11 @@ concept is_collection = requires(const T &collection) {
   collection.end();
 };
 template <typename T>
+concept is_reversible = requires(const T &collection) {
+  std::begin(collection);
+  std::end(collection);
+};
+template <typename T>
 concept is_reversible_collection = requires(const T &collection) {
   collection.rbegin();
   collection.rend();
@@ -36,6 +41,10 @@ void print_reverse_collection(const T &collection);
 template <typename T>
   requires is_collection<T>
 void print_collection(const T &collection);
+
+template <typename T>
+  requires is_reversible<T>
+void print_raw_array(const T &collection);
 
 template <typename T>
   requires is_collection<T>
