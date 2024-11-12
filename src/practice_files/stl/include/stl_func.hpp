@@ -1,9 +1,11 @@
 #include <array>
 #include <concepts>
 #include <cstring>
+#include <deque>
 #include <list>
 #include <stack>
 #include <vector>
+
 
 namespace StlExercise {
 void stl_func();

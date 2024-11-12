@@ -47,7 +47,7 @@ void stl_func() {
 
   fmt::print(fg(fmt::color::green), "stack2: ");
   print_stack(stack2);
-   */
+
 
   // list is better when you want insertion from both side or in the middle
   // as well as deletion. better complexity than vector.
@@ -84,6 +84,37 @@ void stl_func() {
   int raw_arr[]{1, 2, 3, 4, 5};
   fmt::print(fg(fmt::color::green), "\nPrinting raw_arr with iterators : ");
   print_raw_array(raw_arr);
+   */
+
+  // deque is best for adding from both side (double end queue)
+  std::deque<int> deq1{1, 2, 3, 4, 5, 6, 7};
+
+  fmt::print(fg(fmt::color::green), "\ndeq1: ");
+  print_collection(deq1);
+
+  auto iter{deq1.begin() + 1};
+  deq1.insert(iter, 100);
+
+  fmt::print(fg(fmt::color::green), "\ndeq1 after insertion: ");
+  print_collection(deq1);
+
+  deq1.erase(iter + 1);
+
+  fmt::print(fg(fmt::color::green), "\ndeq1 after erase: ");
+  print_collection(deq1);
+
+  fmt::print(fg(fmt::color::green), "\ndeq1 max size: {}", deq1.max_size());
+
+  // deque is specialized for these methods!
+  deq1.pop_back();
+  deq1.pop_front();
+  deq1.push_back(1000);
+  deq1.push_front(2000);
+
+  fmt::print(fg(fmt::color::green), "\ndeq1 after push and pop: ");
+  print_collection(deq1);
+
+  fmt::println("");
 }
 
 template <typename T> void print_raw_array(const T *p, size_t size) {
