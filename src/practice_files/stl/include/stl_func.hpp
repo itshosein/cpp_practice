@@ -1,11 +1,15 @@
+#ifndef STL_FUNC_HPP
+#define STL_FUNC_HPP
+
+#include <algorithm>
 #include <array>
 #include <concepts>
 #include <cstring>
 #include <deque>
+#include <forward_list>
 #include <list>
 #include <stack>
 #include <vector>
-
 
 namespace StlExercise {
 void stl_func();
@@ -54,3 +58,5 @@ void print_collection(const T &collection, size_t begin_offset,
                       size_t end_offset);
 
 } // namespace StlExercise
+
+#endif // STL_FUNC_HPP

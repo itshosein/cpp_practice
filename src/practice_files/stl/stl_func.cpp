@@ -84,7 +84,7 @@ void stl_func() {
   int raw_arr[]{1, 2, 3, 4, 5};
   fmt::print(fg(fmt::color::green), "\nPrinting raw_arr with iterators : ");
   print_raw_array(raw_arr);
-   */
+
 
   // deque is best for adding from both side (double end queue)
   std::deque<int> deq1{1, 2, 3, 4, 5, 6, 7};
@@ -113,8 +113,42 @@ void stl_func() {
 
   fmt::print(fg(fmt::color::green), "\ndeq1 after push and pop: ");
   print_collection(deq1);
+  */
 
-  fmt::println("");
+  // forward list has forward iterator so it can't use [] and reverse iterator
+  // it is not contiguous finding just one element is costly o(n)
+  // it has functions like unique and sort
+  // every singly-link or doubly-link has unique and sort
+  std::forward_list<int> fl1{123, 4, 56, 78, 123, 4, 5, 5, 12, 5, 7, 8, 9};
+
+  fmt::print(fg(fmt::color::green), "fl1: ");
+  print_collection(fl1);
+
+  fl1.insert_after(fl1.before_begin(), 1000);
+  fmt::print(fg(fmt::color::green), "fl1 after insert_after: ");
+  print_collection(fl1);
+
+  auto found_iter{std::find(fl1.before_begin(), fl1.end(), 5)};
+  if (found_iter != fl1.end()) {
+    fmt::print(fg(fmt::color::green), "found number 5 in fl1: {}\n",
+               *found_iter);
+  } else {
+    fmt::print(fg(fmt::color::green), "not found number 5 in fl1\n");
+  }
+
+  // only remove contiguous repeat! so we can sort to effectively remove
+  // duplications
+  fl1.unique();
+  fmt::print(fg(fmt::color::green), "fl1 after unique: ");
+  print_collection(fl1);
+
+  fl1.sort([](const int &a, const int &b) -> bool { return a < b; });
+  fmt::print(fg(fmt::color::green), "fl1 after sort: ");
+  print_collection(fl1);
+
+  fl1.unique();
+  fmt::print(fg(fmt::color::green), "fl1 after sort unique: ");
+  print_collection(fl1);
 }
 
 template <typename T> void print_raw_array(const T *p, size_t size) {
@@ -152,6 +186,8 @@ void print_collection(const T &collection) {
     fmt::print(fg(fmt::color::green), "{} ", *iterator);
     iterator++;
   }
+
+  fmt::println("");
 }
 
 template <typename T>
