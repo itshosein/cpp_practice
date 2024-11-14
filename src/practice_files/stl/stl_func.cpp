@@ -149,7 +149,7 @@ void stl_func() {
   fl1.unique();
   fmt::print(fg(fmt::color::green), "fl1 after sort unique: ");
   print_collection(fl1);
-  */
+
 
   std::pair<double, std::string> p1{192.22, "Hello"};
   auto p2{std::make_pair<double, std::string>(12.33, "hii")};
@@ -174,6 +174,43 @@ void stl_func() {
   }
   fmt::print(fg(fmt::color::green), "vec4[0] after for first: {} second: {}\n",
              vec4[0].first, vec4[0].second);
+
+  // set is working with operator< and it is in-order!
+  std::set<int , std::less<int>> set1{3, 1, 2, 5, 666, 11, 0, 666}; // default
+  // functor
+  std::set<std::string, std::function<bool(const std::string &, const
+  std::string &)>> set_str1(str_compare);
+
+  set_str1.insert({"test1", "test11", "test2", "test22", "test332414"});
+
+  fmt::print(fg(fmt::color::green), "set1:\n");
+  print_collection(set1);
+
+  auto insert_result{set_str1.insert("test1")};
+
+  if (insert_result.second) {
+    fmt::print(fg(fmt::color::blue), "insertion of {} was successful!\n",
+               *insert_result.first);
+  } else {
+    fmt::print(fg(fmt::color::red), "insertion of {} was not successful!\n",
+               *insert_result.first);
+  }
+
+  auto iter_found{std::find(set_str1.begin(), set_str1.end(), "test1")};
+
+  if (iter_found != set_str1.end()) {
+    set_str1.erase(iter_found);
+    fmt::print(fg(fmt::color::blue), "deletion of {} was successful!\n",
+               "test1");
+  } else {
+    fmt::print(fg(fmt::color::blue), "deletion of {} was not successful!\n",
+               "test1");
+  }
+
+  fmt::print(fg(fmt::color::green), "set_str1:\n");
+  print_collection(set_str1);
+
+  */
 }
 
 template <typename T> void print_raw_array(const T *p, size_t size) {
@@ -249,5 +286,9 @@ void print_collection(const T &collection, size_t begin_offset,
     fmt::print(fg(fmt::color::green), "{} ", *begin_iterator);
     begin_iterator++;
   }
+}
+
+bool str_compare(const std::string &a, const std::string &b) {
+  return a.size() < b.size();
 }
 } // namespace StlExercise

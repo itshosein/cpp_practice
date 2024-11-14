@@ -7,11 +7,13 @@
 #include <cstring>
 #include <deque>
 #include <forward_list>
+#include <functional>
 #include <list>
+#include <set>
 #include <stack>
+#include <string>
 #include <utility>
 #include <vector>
-
 
 namespace StlExercise {
 void stl_func();
@@ -58,6 +60,8 @@ template <typename T>
   requires is_collection<T>
 void print_collection(const T &collection, size_t begin_offset,
                       size_t end_offset);
+
+bool str_compare(const std::string &a, const std::string &b);
 
 } // namespace StlExercise
 

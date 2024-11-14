@@ -69,6 +69,7 @@
     "thread": "cpp",
     "cassert": "cpp",
     "list": "cpp",
-    "forward_list": "cpp"
+    "forward_list": "cpp",
+    "set": "cpp"
   }
 }
