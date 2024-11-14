@@ -70,6 +70,7 @@
     "cassert": "cpp",
     "list": "cpp",
     "forward_list": "cpp",
-    "set": "cpp"
+    "set": "cpp",
+    "map": "cpp"
   }
 }

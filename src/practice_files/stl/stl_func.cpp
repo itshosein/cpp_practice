@@ -211,6 +211,22 @@ void stl_func() {
   print_collection(set_str1);
 
   */
+  // ordered collection of set that is ordered based of keys
+  std::map<std::string, std::string> map1{{"k1", "v1"}, {"k11", "v2"}};
+
+  map1.insert({"k2", "v2"});
+  auto [pair_res, is_bool_inserted]{map1.insert({"k1", "v2"})};
+
+  if (is_bool_inserted) {
+    fmt::print(fg(fmt::color::blue), "insertion of {} was successful!\n",
+               pair_res->first);
+  } else {
+    fmt::print(fg(fmt::color::red), "insertion of {} was not successful!\n",
+               pair_res->first);
+  }
+
+  fmt::print(fg(fmt::color::green), "map1:\n");
+  print_collection(map1);
 }
 
 template <typename T> void print_raw_array(const T *p, size_t size) {
@@ -291,4 +307,16 @@ void print_collection(const T &collection, size_t begin_offset,
 bool str_compare(const std::string &a, const std::string &b) {
   return a.size() < b.size();
 }
+
+template <typename K, typename V>
+  requires is_collection<K>
+void print_collection(const std::map<K, V> &collection) {
+  auto iter{collection.begin()};
+
+  while (iter != collection.end()) {
+    fmt::print(fg(fmt::color::green), "({} : {}) ", iter->first, iter->second);
+    iter++;
+  }
+}
+
 } // namespace StlExercise

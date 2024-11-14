@@ -9,6 +9,7 @@
 #include <forward_list>
 #include <functional>
 #include <list>
+#include <map>
 #include <set>
 #include <stack>
 #include <string>
@@ -62,6 +63,10 @@ void print_collection(const T &collection, size_t begin_offset,
                       size_t end_offset);
 
 bool str_compare(const std::string &a, const std::string &b);
+
+template <typename K, typename V>
+  requires is_collection<K>
+void print_collection(const std::map<K, V> &collection);
 
 } // namespace StlExercise
 
