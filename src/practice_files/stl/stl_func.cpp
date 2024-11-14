@@ -113,7 +113,7 @@ void stl_func() {
 
   fmt::print(fg(fmt::color::green), "\ndeq1 after push and pop: ");
   print_collection(deq1);
-  */
+
 
   // forward list has forward iterator so it can't use [] and reverse iterator
   // it is not contiguous finding just one element is costly o(n)
@@ -149,6 +149,31 @@ void stl_func() {
   fl1.unique();
   fmt::print(fg(fmt::color::green), "fl1 after sort unique: ");
   print_collection(fl1);
+  */
+
+  std::pair<double, std::string> p1{192.22, "Hello"};
+  auto p2{std::make_pair<double, std::string>(12.33, "hii")};
+
+  fmt::print(fg(fmt::color::green), "p1: first: {} second: {}\n", p1.first,
+             p1.second);
+  fmt::print(fg(fmt::color::green), "p2: first: {} second: {}\n", p2.first,
+             p2.second);
+
+  auto [p1_first, p1_second]{p1};
+
+  fmt::print(fg(fmt::color::green), "p1 auto: first: {} second: {}\n", p1_first,
+             p1_second);
+
+  std::vector<std::pair<std::string, std::string>> vec4{{"k1", "v1"},
+                                                        {"k2", "v2"}};
+
+  fmt::print(fg(fmt::color::green), "p2 for auto:\n");
+  for (auto &[first, second] : vec4) {
+    first = "k11";
+    fmt::print(fg(fmt::color::green), "first: {} second: {}\n", first, second);
+  }
+  fmt::print(fg(fmt::color::green), "vec4[0] after for first: {} second: {}\n",
+             vec4[0].first, vec4[0].second);
 }
 
 template <typename T> void print_raw_array(const T *p, size_t size) {

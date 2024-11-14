@@ -68,6 +68,7 @@
     "stop_token": "cpp",
     "thread": "cpp",
     "cassert": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "forward_list": "cpp"
   }
 }
