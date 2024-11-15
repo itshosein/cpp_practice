@@ -10,6 +10,7 @@
 #include <functional>
 #include <list>
 #include <map>
+#include <queue>
 #include <set>
 #include <stack>
 #include <string>
@@ -67,6 +68,9 @@ bool str_compare(const std::string &a, const std::string &b);
 template <typename K, typename V>
   requires is_collection<K>
 void print_collection(const std::map<K, V> &collection);
+
+template <typename T, typename U = std::deque<T>>
+void print_queue(std::queue<T, U> queue);
 
 } // namespace StlExercise
 

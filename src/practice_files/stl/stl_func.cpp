@@ -210,7 +210,7 @@ void stl_func() {
   fmt::print(fg(fmt::color::green), "set_str1:\n");
   print_collection(set_str1);
 
-  */
+
   // ordered collection of set that is ordered based of keys
   std::map<std::string, std::string> map1{{"k1", "v1"}, {"k11", "v2"}};
 
@@ -227,6 +227,24 @@ void stl_func() {
 
   fmt::print(fg(fmt::color::green), "map1:\n");
   print_collection(map1);
+
+  // default container is deque
+  // container can be list and deque
+  std::queue<int> q1{};
+  q1.push(10);
+  q1.push(123123);
+  q1.push(451);
+  fmt::print(fg(fmt::color::green), "q1:\n");
+  print_queue(q1);
+
+  std::queue<int, std::list<int>> q2{};
+  q2.push(98);
+  q2.push(8213);
+  q2.push(1407);
+  q2.push(180273);
+  fmt::print(fg(fmt::color::green), "q2:\n");
+  print_queue(q2);
+  */
 }
 
 template <typename T> void print_raw_array(const T *p, size_t size) {
@@ -317,6 +335,15 @@ void print_collection(const std::map<K, V> &collection) {
     fmt::print(fg(fmt::color::green), "({} : {}) ", iter->first, iter->second);
     iter++;
   }
+}
+
+template <typename T, typename U> void print_queue(std::queue<T, U> q) {
+
+  while (!q.empty()) {
+    fmt::print(fg(fmt::color::green), "{} ", q.front());
+    q.pop();
+  }
+  fmt::println("");
 }
 
 } // namespace StlExercise
