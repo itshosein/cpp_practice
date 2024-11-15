@@ -72,6 +72,10 @@ void print_collection(const std::map<K, V> &collection);
 template <typename T, typename U = std::deque<T>>
 void print_queue(std::queue<T, U> queue);
 
+template <typename T, typename U = std::vector<T>,
+          typename V = std::less<typename U::value_type>>
+void print_priority_queue(std::priority_queue<T, U, V> pq);
+
 } // namespace StlExercise
 
 #endif // STL_FUNC_HPP

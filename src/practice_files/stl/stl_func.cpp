@@ -245,6 +245,14 @@ void stl_func() {
   fmt::print(fg(fmt::color::green), "q2:\n");
   print_queue(q2);
   */
+  // default container is vector
+  // default comparator is std::less
+  std::priority_queue<double> pq1{};
+  pq1.push(123.123);
+  pq1.push(9123.123);
+  pq1.push(192.12);
+  fmt::print(fg(fmt::color::green), "pq1:\n");
+  print_priority_queue(pq1);
 }
 
 template <typename T> void print_raw_array(const T *p, size_t size) {
@@ -342,6 +350,15 @@ template <typename T, typename U> void print_queue(std::queue<T, U> q) {
   while (!q.empty()) {
     fmt::print(fg(fmt::color::green), "{} ", q.front());
     q.pop();
+  }
+  fmt::println("");
+}
+
+template <typename T, typename U, typename V>
+void print_priority_queue(std::priority_queue<T, U, V> pq) {
+  while (!pq.empty()) {
+    fmt::print(fg(fmt::color::green), "{} ", pq.top());
+    pq.pop();
   }
   fmt::println("");
 }
