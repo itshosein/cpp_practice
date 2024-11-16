@@ -76,6 +76,16 @@ template <typename T, typename U = std::vector<T>,
           typename V = std::less<typename U::value_type>>
 void print_priority_queue(std::priority_queue<T, U, V> pq);
 
+class DivisibleBy {
+private:
+  int m_d{};
+
+public:
+  DivisibleBy(int &&d) : m_d{d} {}
+  inline bool operator()(const int &n) { return n % m_d == 0; }
+  ~DivisibleBy() {}
+};
+
 } // namespace StlExercise
 
 #endif // STL_FUNC_HPP

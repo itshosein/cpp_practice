@@ -258,24 +258,33 @@ void stl_func() {
   int coll1[]{1, 2, 3, 4, 5};
   std::vector<int> coll2{10, 20, 30, 188, 14};
   std::set<int> coll3{29, 10, 298, 3914, 120, 1310};
+  /*
+    if (std::all_of(std::begin(coll1), std::end(coll1),
+                    [](int &a) { return a % 2 == 0; })) {
+      fmt::print(fg(fmt::color::green), "All of member of coll1 is even\n");
+    } else {
+      fmt::print(fg(fmt::color::green), "Not all of member of coll1 is even\n");
+    }
+    if (std::all_of(std::begin(coll2), std::end(coll2),
+                    [](int &a) { return a % 2 == 0; })) {
+      fmt::print(fg(fmt::color::green), "All of member of coll2 is even\n");
+    } else {
+      fmt::print(fg(fmt::color::green), "Not all of member of coll2 is even\n");
+    }
+    if (std::all_of(std::next(std::begin(coll3), 1), std::end(coll3),
+                    [](const int &a) { return a % 2 == 0; })) {
+      fmt::print(fg(fmt::color::green), "All of member of coll3 is even\n");
+    } else {
+      fmt::print(fg(fmt::color::green), "Not all of member of coll3 is even\n");
+    } */
 
-  if (std::all_of(std::begin(coll1), std::end(coll1),
-                  [](int &a) { return a % 2 == 0; })) {
-    fmt::print(fg(fmt::color::green), "All of member of coll1 is even\n");
+  if (std::any_of(std::next(std::begin(coll2), 3), std::end(coll2),
+                  DivisibleBy(10))) {
+    fmt::print(fg(fmt::color::green),
+               "At least one of coll2's member is divisible by 10\n");
   } else {
-    fmt::print(fg(fmt::color::green), "Not all of member of coll1 is even\n");
-  }
-  if (std::all_of(std::begin(coll2), std::end(coll2),
-                  [](int &a) { return a % 2 == 0; })) {
-    fmt::print(fg(fmt::color::green), "All of member of coll2 is even\n");
-  } else {
-    fmt::print(fg(fmt::color::green), "Not all of member of coll2 is even\n");
-  }
-  if (std::all_of(std::next(std::begin(coll3), 1), std::end(coll3),
-                  [](const int &a) { return a % 2 == 0; })) {
-    fmt::print(fg(fmt::color::green), "All of member of coll3 is even\n");
-  } else {
-    fmt::print(fg(fmt::color::green), "Not all of member of coll3 is even\n");
+    fmt::print(fg(fmt::color::green),
+               "None of coll2's member is divisible by 10\n");
   }
 }
 
