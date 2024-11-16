@@ -276,7 +276,7 @@ void stl_func() {
       fmt::print(fg(fmt::color::green), "All of member of coll3 is even\n");
     } else {
       fmt::print(fg(fmt::color::green), "Not all of member of coll3 is even\n");
-    } */
+    }
 
   if (std::any_of(std::next(std::begin(coll2), 3), std::end(coll2),
                   DivisibleBy(10))) {
@@ -285,6 +285,13 @@ void stl_func() {
   } else {
     fmt::print(fg(fmt::color::green),
                "None of coll2's member is divisible by 10\n");
+  }
+*/
+  if (std::none_of(std::next(std::begin(coll3), 0), std::end(coll3), is_odd)) {
+    fmt::print(fg(fmt::color::green), "None of coll3's member is odd\n");
+  } else {
+    fmt::print(fg(fmt::color::green),
+               "At least one of coll3's member is odd\n");
   }
 }
 
@@ -395,5 +402,7 @@ void print_priority_queue(std::priority_queue<T, U, V> pq) {
   }
   fmt::println("");
 }
+
+bool is_odd(int a) { return a % 2 != 0; }
 
 } // namespace StlExercise

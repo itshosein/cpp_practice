@@ -86,6 +86,8 @@ public:
   ~DivisibleBy() {}
 };
 
+bool is_odd(int a);
+
 } // namespace StlExercise
 
 #endif // STL_FUNC_HPP
