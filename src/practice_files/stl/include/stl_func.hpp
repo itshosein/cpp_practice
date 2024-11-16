@@ -88,6 +88,16 @@ public:
 
 bool is_odd(int a);
 
+class SumFunctor {
+  int sum{};
+
+public:
+  SumFunctor() = default;
+  ~SumFunctor() = default;
+  inline int get_sum() const { return sum; }
+  inline void operator()(const int &a) { sum += a; };
+};
+
 } // namespace StlExercise
 
 #endif // STL_FUNC_HPP

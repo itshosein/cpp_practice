@@ -286,13 +286,26 @@ void stl_func() {
     fmt::print(fg(fmt::color::green),
                "None of coll2's member is divisible by 10\n");
   }
-*/
+
   if (std::none_of(std::next(std::begin(coll3), 0), std::end(coll3), is_odd)) {
     fmt::print(fg(fmt::color::green), "None of coll3's member is odd\n");
   } else {
     fmt::print(fg(fmt::color::green),
                "At least one of coll3's member is odd\n");
   }
+  */
+  int sum_coll1{};
+  int sum_coll2{};
+
+  std::for_each(std::begin(coll1), std::end(coll1),
+                [&sum_coll1](const int &n) { sum_coll1 += n; });
+  std::for_each(std::begin(coll2), std::end(coll2),
+                [&sum_coll2](const int &n) { sum_coll2 += n; });
+  SumFunctor s{std::for_each(std::begin(coll3), std::end(coll3), SumFunctor())};
+
+  fmt::print(fg(fmt::color::green), "sum for coll1 is: {}\n", sum_coll1);
+  fmt::print(fg(fmt::color::green), "sum for coll2 is: {}\n", sum_coll2);
+  fmt::print(fg(fmt::color::green), "sum for coll3 is: {}\n", s.get_sum());
 }
 
 template <typename T> void print_raw_array(const T *p, size_t size) {
