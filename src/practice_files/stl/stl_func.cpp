@@ -293,7 +293,7 @@ void stl_func() {
     fmt::print(fg(fmt::color::green),
                "At least one of coll3's member is odd\n");
   }
-  */
+
   int sum_coll1{};
   int sum_coll2{};
 
@@ -306,6 +306,30 @@ void stl_func() {
   fmt::print(fg(fmt::color::green), "sum for coll1 is: {}\n", sum_coll1);
   fmt::print(fg(fmt::color::green), "sum for coll2 is: {}\n", sum_coll2);
   fmt::print(fg(fmt::color::green), "sum for coll3 is: {}\n", s.get_sum());
+  */
+
+  auto max_el{std::max_element(coll2.begin(), coll2.end())};
+  auto min_el{std::min_element(coll2.begin(), coll2.end())};
+
+  fmt::print(fg(fmt::color::green), "max element in coll2: {}\n", *max_el);
+  fmt::print(fg(fmt::color::green), "min element in coll2: {}\n", *min_el);
+
+  int number_to_be_close{87};
+  auto comparator{[&number_to_be_close](const int &a, const int &b) {
+    return std::abs(a - number_to_be_close) < std::abs(b - number_to_be_close);
+  }};
+  auto max_el1 = std::max_element(coll3.begin(), coll3.end(), comparator);
+  auto min_el1 = std::min_element(coll3.begin(), coll3.end(), comparator);
+  fmt::print(fg(fmt::color::green), "max element near {} in coll3: {}\n",
+             number_to_be_close, *max_el1);
+  fmt::print(fg(fmt::color::green), "min element near {} in coll3: {}\n",
+             number_to_be_close, *min_el1);
+
+  const auto [min_el2,
+              max_el2]{std::minmax_element(std::begin(coll1), std::end(coll1))};
+
+  fmt::print(fg(fmt::color::green), "max element in coll1: {}\n", *max_el2);
+  fmt::print(fg(fmt::color::green), "min element in coll1: {}\n", *min_el2);
 }
 
 template <typename T> void print_raw_array(const T *p, size_t size) {
